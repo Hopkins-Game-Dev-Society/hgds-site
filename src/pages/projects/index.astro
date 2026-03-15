@@ -1,0 +1,23 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { projects } from "../../data/projects";
+---
+
+<Layout title="Projects | Hopkins Game Dev Society">
+  <h1>Projects</h1>
+
+  <p>
+    These are some of the games currently being developed by members of the
+    Hopkins Game Dev Society.
+  </p>
+
+  <ul>
+    {projects.map((project) => (
+      <li>
+        <a href={`/projects/${project.slug}`}>
+          {project.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</Layout>
