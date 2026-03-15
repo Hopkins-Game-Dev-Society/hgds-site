@@ -1,11 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+  {
+    title: "Sunfall",
+    description:
+      "Hack and slash through the shadows in this dark rogue-lite as you battle your way to free the sun.",
+    href: "/projects/sunfall",
+  },
+  {
+    title: "Immunoblast",
+    description:
+      "A 2D action game that combines combat with a unique journey through the microscopic battleground of the human immune system.",
+    href: "/projects/immunoblast",
+  },
+  {
+    title: "Vesuvius",
+    description:
+      "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius, its mysterious cult, and the strange forces twisting its depths.",
+    href: "/projects/vesuvius",
+  },
+  {
+    title: "Merchant Squabble",
+    description:
+      "In this long-term strategy card game, build paths to collect resources and outmaneuver rivals.",
+    href: "/projects/merchant-squabble",
+  },
+  {
+    title: "Project Greyclaw",
+    description:
+      "Dystopian sci-fi horror re-imagining of Five Nights at Freddy's where you work as a technician tasked with fixing a massive family entertainment center.",
+    href: "/projects/project-greyclaw",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Hopkins Game Dev Society">
+  <section style="padding: 2rem 0 3rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Hopkins Game Dev Society</h1>
+    <p style="font-size: 1.1rem; color: #b8c0e0; margin-bottom: 1.5rem;">
+      A Community of Game Developers @ Johns Hopkins University
+    </p>
+    <a href="/about">About us</a>
+  </section>
+
+  <section>
+    <h2 style="margin-bottom: 1.5rem;">Active Projects</h2>
+
+    <div
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;"
+    >
+      {projects.map((project) => (
+        <article
+          style="border: 1px solid #2a3566; background: #121933; border-radius: 12px; padding: 1rem;"
+        >
+          <h3 style="margin-top: 0;">{project.title}</h3>
+          <p style="color: #b8c0e0; line-height: 1.5;">{project.description}</p>
+          <a href={project.href}>Learn more</a>
+        </article>
+      ))}
+    </div>
+  </section>
 </Layout>
