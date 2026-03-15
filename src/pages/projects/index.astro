@@ -1,23 +1,28 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../../data/projects";
 ---
 
 <Layout title="Projects | Hopkins Game Dev Society">
-  <h1>Projects</h1>
+  <section style="padding: 2rem 0;">
+    <h1>Projects</h1>
 
-  <p>
-    These are some of the games currently being developed by members of the
-    Hopkins Game Dev Society.
-  </p>
+    <p style="max-width: 750px; line-height: 1.6; color: #b8c0e0;">
+      These are some of the games currently being developed by members of the
+      Hopkins Game Dev Society.
+    </p>
 
-  <ul>
-    {projects.map((project) => (
-      <li>
-        <a href={`/projects/${project.slug}`}>
-          {project.title}
-        </a>
-      </li>
-    ))}
-  </ul>
+    <div
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem;"
+    >
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          shortDescription={project.shortDescription}
+          slug={project.slug}
+        />
+      ))}
+    </div>
+  </section>
 </Layout>

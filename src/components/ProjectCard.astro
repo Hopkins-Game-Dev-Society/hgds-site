@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string
+  shortDescription: string
+  slug: string
+}
+
+const { title, shortDescription, slug } = Astro.props
+---
+
+<article
+  style="border: 1px solid #2a3566; background: #121933; border-radius: 12px; padding: 1rem;"
+>
+  <h3 style="margin-top: 0;">{title}</h3>
+
+  <p style="color: #b8c0e0; line-height: 1.5;">
+    {shortDescription}
+  </p>
+
+  <a href={`/projects/${slug}`}>Learn more</a>
+</article>

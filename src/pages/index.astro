@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../data/projects";
 ---
 
@@ -18,19 +19,17 @@ import { projects } from "../data/projects";
     <div
       style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;"
     >
-      {projects.map((project) => (
-        <article
-          style="border: 1px solid #2a3566; background: #121933; border-radius: 12px; padding: 1rem;"
-        >
-          <h3 style="margin-top: 0;">{project.title}</h3>
-
-          <p style="color: #b8c0e0; line-height: 1.5;">
-            {project.shortDescription}
-          </p>
-
-          <a href={`/projects/${project.slug}`}>Learn more</a>
-        </article>
-      ))}
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;"
+      >
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            shortDescription={project.shortDescription}
+            slug={project.slug}
+          />
+        ))}
+      </div>
     </div>
   </section>
 </Layout>
