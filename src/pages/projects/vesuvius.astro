@@ -1,14 +1,26 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { projects } from "../../data/projects";
+
+const project = projects.find(p => p.slug === "vesuvius");
 ---
 
 <Layout title="Vesuvius | Hopkins Game Dev Society">
   <section style="padding: 2rem 0;">
+    {project?.image && (
+        <div class="project-hero">
+            <img
+            src={project.image}
+            alt={project.imageAlt ?? `${project.title} cover`}
+            style={`object-position: center ${project.imageOffsetY ?? 50}%`}
+            />
+        </div>
+        )}
     <p style="margin-bottom: 0.75rem;">
       <a href="/projects">← Back to Projects</a>
     </p>
 
-    <h1 style="margin-bottom: 0.75rem;">Vesuvius</h1>
+    <h1 style="margin-bottom: 0.75rem;">{project?.title}</h1>
 
     <p style="font-size: 1.1rem; line-height: 1.6; color: #b8c0e0; max-width: 800px;">
       A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius,

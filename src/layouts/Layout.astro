@@ -259,6 +259,23 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         display: block;
       }
 
+      .project-hero {
+        width: 100%;
+        max-width: 900px;
+        margin: 2rem auto 2.5rem;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .project-hero img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
       @media (max-width: 640px) {
         .nav {
           min-height: auto;
