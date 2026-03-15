@@ -3,19 +3,39 @@ interface Props {
   title: string
   shortDescription: string
   slug: string
+  image?: string
+  imageAlt?: string
+  imageOffsetY?: number
 }
 
-const { title, shortDescription, slug } = Astro.props
+const {
+  title,
+  shortDescription,
+  slug,
+  image,
+  imageAlt,
+  imageOffsetY = 50
+} = Astro.props;
 ---
 
-<article
-  style="border: 1px solid #2a3566; background: #121933; border-radius: 12px; padding: 1rem;"
->
-  <h3 style="margin-top: 0;">{title}</h3>
+<article class="card">
+  {image && (
+    <div class="card-media">
+        <img
+        src={image}
+        alt={imageAlt ?? `${title} screenshot`}
+        style={`object-position: center ${imageOffsetY}%`}
+        />
+    </div>
+    )}
 
-  <p style="color: #b8c0e0; line-height: 1.5;">
-    {shortDescription}
-  </p>
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
 
-  <a href={`/projects/${slug}`}>Learn more</a>
+    <p class="card-text">{shortDescription}</p>
+
+    <a class="card-link" href={`/projects/${slug}`}>
+      Learn more <span aria-hidden="true">→</span>
+    </a>
+  </div>
 </article>

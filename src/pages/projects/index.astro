@@ -5,22 +5,23 @@ import { projects } from "../../data/projects";
 ---
 
 <Layout title="Projects | Hopkins Game Dev Society">
-  <section style="padding: 2rem 0;">
+  <section>
     <h1>Projects</h1>
 
-    <p style="max-width: 750px; line-height: 1.6; color: #b8c0e0;">
+    <p class="lede">
       These are some of the games currently being developed by members of the
       Hopkins Game Dev Society.
     </p>
 
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem;"
-    >
+    <div class="grid" style="margin-top: 1.5rem;">
       {projects.map((project) => (
         <ProjectCard
           title={project.title}
           shortDescription={project.shortDescription}
           slug={project.slug}
+          image={project.image}
+          imageAlt={project.imageAlt}
+          imageOffsetY={project.imageOffsetY}
         />
       ))}
     </div>
