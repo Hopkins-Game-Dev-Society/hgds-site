@@ -125,6 +125,8 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         z-index: 10;
         backdrop-filter: blur(10px);
         background: rgba(8, 26, 58, 0.92);
+        font-family: "Ubuntu Mono", monospace;
+        letter-spacing: 0.1em;
         border-bottom: 1px solid var(--header-border);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
       }
@@ -140,16 +142,16 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       .brand {
         display: inline-flex;
         align-items: center;
+        gap: 1.2rem;
         font-weight: 800;
         font-size: 1rem;
         color: var(--header-text);
-        letter-spacing: 0.01em;
-        font-family: "Ubuntu Mono", monospace;
       }
 
-      .brand:hover {
-        color: var(--brand-gold);
-        opacity: 1;
+      .brand-logo {
+        height: 40px;
+        width: auto;
+        display: block;
       }
 
       .nav-links {
@@ -335,7 +337,10 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
   <body>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="/">Hopkins Game Dev Society</a>
+        <a class="brand" href="/">
+          <img src="/images/hgds-logo.png" alt="Hopkins Game Dev Society logo" class="brand-logo" />
+          <span class="brand-text">Hopkins Game Dev Society</span>
+        </a>
 
         <nav class="nav-links">
           <a href="/about">About</a>
