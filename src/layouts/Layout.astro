@@ -8,6 +8,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style is:global>
 
       .btn-interactive {
@@ -67,7 +68,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-family: "Inter", system-ui, sans-serif;
         background: var(--bg);
         color: var(--text);
         -webkit-font-smoothing: antialiased;
@@ -89,12 +90,9 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         line-height: 1.15;
         margin-top: 0;
         letter-spacing: -0.02em;
-      }
-
-      h1,
-      h2,
-      h3 {
+        font-family: "Ubuntu Mono", monospace;
         color: var(--brand-blue);
+        letter-spacing: 0.03em;
       }
 
       h1 {
@@ -146,6 +144,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         font-size: 1rem;
         color: var(--header-text);
         letter-spacing: 0.01em;
+        font-family: "Ubuntu Mono", monospace;
       }
 
       .brand:hover {
@@ -192,6 +191,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         background: var(--brand-gold);
         color: var(--brand-blue);
         font-weight: 700;
+        font-family: "Inter", system-ui, sans-serif;
         transition:
           transform 0.18s ease,
           background 0.18s ease,
