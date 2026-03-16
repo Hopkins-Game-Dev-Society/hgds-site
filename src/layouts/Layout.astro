@@ -9,6 +9,24 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <style is:global>
+
+    .btn-interactive {
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        text-decoration: none;
+        /* Ensure colors match your variables */
+        background-color: #121933;
+        color: #b8c0e0;
+        border: 1px solid #2a3566;
+      }
+
+      .btn-interactive:hover {
+        background-color: #b8c0e0 !important;
+        color: #121933 !important;
+        border-color: #b8c0e0 !important;
+        cursor: pointer;
+      }
+
       :root {
         --bg: #0a1020;
         --bg-elevated: #121a30;
@@ -16,7 +34,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         --panel-hover: #1b2a4d;
         --text: #f4f7ff;
         --muted: #b6c2e1;
-        --accent: #88b4ff;
+        --accent: #c0cbdd;
         --accent-strong: #a7c7ff;
         --border: #2a3966;
         --max-width: 1100px;
