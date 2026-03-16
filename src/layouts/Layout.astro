@@ -10,41 +10,50 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
     <title>{title}</title>
     <style is:global>
 
-    .btn-interactive {
+      .btn-interactive {
         transition: all 0.2s ease-in-out;
         display: inline-block;
         text-decoration: none;
-        /* Ensure colors match your variables */
-        background-color: #121933;
-        color: #b8c0e0;
-        border: 1px solid #2a3566;
+        background-color: var(--brand-gold);
+        color: var(--brand-blue);
+        border: 1px solid #cfab70;
       }
 
       .btn-interactive:hover {
-        background-color: #b8c0e0 !important;
-        color: #121933 !important;
-        border-color: #b8c0e0 !important;
+        background-color: var(--brand-blue) !important;
+        color: #ffffff !important;
+        border-color: var(--brand-blue) !important;
         cursor: pointer;
       }
 
       :root {
-        --bg: #f5f7fb;
+        --bg: #f4f7fb;
         --bg-elevated: #ffffff;
 
         --panel: #ffffff;
-        --panel-hover: #f0f3fa;
+        --panel-hover: #f7f9fc;
 
-        --text: #0f172a;
-        --muted: #5b6478;
+        --text: #142033;
+        --muted: #5f6b7a;
 
-        --accent: #1e3a8a;
-        --accent-strong: #1d4ed8;
+        --brand-gold: #e1bf89;
+        --brand-blue: #002d72;
+        --brand-blue-light: #68ace5;
 
-        --border: #e2e8f0;
+        --accent: var(--brand-blue);
+        --accent-strong: var(--brand-blue-light);
+
+        --border: #d9e2ec;
+
+        --header-bg: #081a3a;
+        --footer-bg: #081a3a;
+        --header-text: #f5f8ff;
+        --header-muted: #c7d6ee;
+        --header-border: rgba(104, 172, 229, 0.2);
 
         --max-width: 1100px;
         --radius: 16px;
-        --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       }
 
       * {
@@ -59,19 +68,19 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         margin: 0;
         min-height: 100vh;
         font-family: Inter, Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        background: var(--bg);
         color: var(--text);
         -webkit-font-smoothing: antialiased;
       }
 
       a {
-        color: var(--accent);
+        color: var(--brand-blue);
         text-decoration: none;
         transition: color 0.18s ease, opacity 0.18s ease;
       }
 
       a:hover {
-        color: var(--accent-strong);
+        color: var(--brand-blue-light);
       }
 
       h1,
@@ -80,6 +89,12 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         line-height: 1.15;
         margin-top: 0;
         letter-spacing: -0.02em;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--brand-blue);
       }
 
       h1 {
@@ -111,8 +126,9 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         top: 0;
         z-index: 10;
         backdrop-filter: blur(10px);
-        background: rgba(255,255,255,0.85);
-        border-bottom: 1px solid var(--border);
+        background: rgba(8, 26, 58, 0.92);
+        border-bottom: 1px solid var(--header-border);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
       }
 
       .nav {
@@ -126,15 +142,15 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       .brand {
         display: inline-flex;
         align-items: center;
-        font-weight: 700;
+        font-weight: 800;
         font-size: 1rem;
-        color: var(--text);
+        color: var(--header-text);
         letter-spacing: 0.01em;
       }
 
       .brand:hover {
-        color: var(--text);
-        opacity: 0.9;
+        color: var(--brand-gold);
+        opacity: 1;
       }
 
       .nav-links {
@@ -144,12 +160,12 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       }
 
       .nav-links a {
-        color: var(--muted);
-        font-weight: 500;
+        color: var(--header-muted);
+        font-weight: 600;
       }
 
       .nav-links a:hover {
-        color: var(--text);
+        color: var(--brand-gold);
       }
 
       main {
@@ -171,23 +187,24 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         align-items: center;
         justify-content: center;
         padding: 0.8rem 1rem;
-        border: 1px solid var(--border);
+        border: 1px solid #cfab70;
         border-radius: 999px;
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-        font-weight: 600;
+        background: var(--brand-gold);
+        color: var(--brand-blue);
+        font-weight: 700;
         transition:
           transform 0.18s ease,
           background 0.18s ease,
-          border-color 0.18s ease;
+          border-color 0.18s ease,
+          box-shadow 0.18s ease;
       }
 
       .button-link:hover {
         transform: translateY(-1px);
-        background: var(--accent-strong);
-        border-color: var(--accent-strong);
-        color: var(--text);
+        background: #ebcca0;
+        border-color: #ebcca0;
+        color: var(--brand-blue);
+        box-shadow: 0 8px 20px rgba(0, 45, 114, 0.14);
       }
 
       .grid {
@@ -198,8 +215,9 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
 
       .site-footer {
         margin-top: 4rem;
-        background: #f8fafc;
-        border-top: 1px solid var(--border);
+        background: var(--footer-bg);
+        border-top: 1px solid var(--header-border);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
       }
 
       .footer-inner {
@@ -209,21 +227,22 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       .footer-title {
         margin: 0 0 0.5rem;
         font-weight: 700;
+        color: var(--header-text);
       }
 
       .footer-links {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
-        color: var(--muted);
+        color: var(--header-muted);
       }
 
       .footer-links a {
-        color: var(--muted);
+        color: var(--header-muted);
       }
 
       .footer-links a:hover {
-        color: var(--text);
+        color: var(--brand-gold);
       }
 
       .card {
@@ -242,9 +261,9 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
 
       .card:hover {
         transform: translateY(-3px);
-        border-color: var(--accent);
+        border-color: var(--brand-blue-light);
         background: var(--panel-hover);
-        box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
       }
 
       .card-body {
