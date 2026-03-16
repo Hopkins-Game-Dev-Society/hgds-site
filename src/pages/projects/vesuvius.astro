@@ -5,7 +5,7 @@ import { projects } from "../../data/projects";
 const project = projects.find((p) => p.slug === "vesuvius");
 ---
 
-<Layout title="Vesuvius | Hopkins Game Dev Society">
+<Layout title={`${project?.title ?? "Project"} | Hopkins Game Dev Society`}>
   <section class="project-page">
     {project?.image && (
       <div class="project-hero">
@@ -23,62 +23,71 @@ const project = projects.find((p) => p.slug === "vesuvius");
 
     <h1>{project?.title}</h1>
 
-    <p class="project-lede">
-      A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius,
-      its mysterious cult, and the strange forces twisting its depths.
-    </p>
+    {project?.tagline && <p class="project-lede">{project.tagline}</p>}
 
-    <div class="project-actions">
-      <a
-        href="https://l1ryx.itch.io/vesuvius"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="button-link btn-interactive"
-      >
-        Play Demo
-      </a>
+    {(project?.playDemoUrl || project?.websiteUrl) && (
+      <div class="project-actions">
+        {project.playDemoUrl && (
+          <a
+            href={project.playDemoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link btn-interactive"
+          >
+            Play Demo
+          </a>
+        )}
 
-      <a
-        href="https://vesuviusgame.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="button-link btn-interactive"
-      >
-        Visit Website
-      </a>
-    </div>
-
-    <section class="project-section">
-      <h2>About the Game</h2>
-
-      <div class="project-copy">
-        <p>
-          Set on a reimagined Mt. Vesuvius, you are to uncover the mystery of a vanished
-          cult that disappeared into the mountain years ago. Within its depths, you will
-          traverse a series of biomes that defy logic — lush forests, icy caves, tranquil
-          lakes, and more — all hidden beneath the snow. Reality often bends, leaving
-          questions on what is real as you navigate shifting landscapes and uncover the
-          mountain’s secrets.
-        </p>
-
-        <p>
-          You will navigate the world through precise platforming, engage in combat with
-          mysterious foes, embark on quests with enigmatic NPCs, and uncover the story
-          woven into the mountain’s surreal environments. Along the way, you’ll discover
-          new abilities that allow you to explore further, unlocking secrets hidden in
-          every corner of this sprawling, interconnected world.
-        </p>
+        {project.websiteUrl && (
+          <a
+            href={project.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link btn-interactive"
+          >
+            Visit Website
+          </a>
+        )}
       </div>
-    </section>
+    )}
 
-    <section class="project-section">
-      <h2>Team</h2>
+    {project?.about && project.about.length > 0 && (
+      <section class="project-section">
+        <h2>About the Game</h2>
 
-      <ul class="team-list">
-        <li><strong>Shawn Guo</strong> — Creative Lead, Programming, Audio, Art</li>
-        <li><strong>Brett Wolfinger</strong> — Technical Lead, Programming, Art</li>
-      </ul>
-    </section>
+        <div class="project-copy">
+          {project.about.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {project?.team && project.team.length > 0 && (
+      <section class="project-section">
+        <h2>Team</h2>
+
+        <ul class="team-list">
+          {project.team.map((member) => (
+            <li>
+              <strong>{member.name}</strong> — {member.roles.join(", ")}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {project?.screenshots && project.screenshots.length > 0 && (
+      <section class="project-section">
+        <div class="screenshots-grid">
+          {project.screenshots.slice(0, 3).map((shot) => (
+            <div class="screenshot-card">
+              <img src={shot.src} alt={shot.alt} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
   </section>
 </Layout>
 
@@ -130,5 +139,28 @@ const project = projects.find((p) => p.slug === "vesuvius");
 
   .team-list li + li {
     margin-top: 0.25rem;
+  }
+
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .screenshot-card {
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .screenshot-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 </style>
