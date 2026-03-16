@@ -250,12 +250,16 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       }
 
       .card {
+        display: flex;
+        flex-direction: column;
         height: 100%;
         border: 1px solid var(--border);
         background: var(--panel);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
         overflow: hidden;
+        text-decoration: none;
+        color: inherit;
         transition:
           transform 0.18s ease,
           border-color 0.18s ease,
@@ -272,6 +276,9 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
 
       .card-body {
         padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
 
       .card-title {
@@ -288,6 +295,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         align-items: center;
         gap: 0.4rem;
         font-weight: 600;
+        margin-top: auto;
       }
 
       .card-media {

@@ -99,6 +99,34 @@ export const projects: Project[] = [
       "A long-term strategy card game where players build paths to collect resources and outmaneuver rivals.",
     image: "/images/projects/merchant-cover.png",
     imageAlt: "Merchant Squabble Cover Art",
+    tagline: "A long-term strategy card game where players build paths to collect resources and outmaneuver rivals.",
+    about: [
+      "This long-term strategy card game puts you in the shoes of a merchant navigating a new territory, where you must expand your business and outsmart competitors. The game blends strategic card play with resource management, as you carve paths across the land to collect valuable resources. Each path you lay gives you control over surrounding resource tiles, which can be spent on useful cards and actions. However, expanding your path comes at a cost, requiring you to sacrifice sections of it for greater rewards.",
+      "Players face both friendly and aggressive visitors, paying in resources to hire ally cards to defend the business while also disrupting the business of rivals. Engage in combat by sending fighter cards against opponents to weaken their operations, and ultimately, take over the land to force your competitors out of business. The game offers solo play or competitive multiplayer for up to three players.",
+      "Inspired by a variety of strategy card games, this digital board game combines depth and tactical decision-making, offering a unique blend of strategic resource management and combat. Playable directly in your browser, the game is designed to be accessible yet challenging, providing a satisfying experience for strategy lovers and fans of complex board games."
+    ],
+
+    team: [
+      {
+        name: "Maria M. Movsheva",
+        roles: ["Programming", "Art"]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/squabble-shot-1.png",
+        alt: "Merchant Squabble gameplay screenshot 1"
+      },
+      {
+        src: "/images/projects/squabble-shot-2.png",
+        alt: "Merchant Squabble gameplay screenshot 2"
+      },
+      {
+        src: "/images/projects/squabble-shot-3.png",
+        alt: "Merchant Squabble gameplay screenshot 3"
+      }
+    ]
   },
   {
     slug: "project-greyclaw",

@@ -1,0 +1,242 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { projects } from "../../data/projects";
+
+const project = projects.find((p) => p.slug === "merchant-squabble");
+---
+
+<Layout title={`${project?.title ?? "Project"} | Hopkins Game Dev Society`}>
+  <section class="project-page">
+    {project?.image && (
+      <div class="project-hero">
+        <img
+          src={project.image}
+          alt={project.imageAlt ?? `${project.title} cover`}
+          style={`object-position: center ${project.imageOffsetY ?? 50}%`}
+        />
+      </div>
+    )}
+
+    <p class="back-link-wrap">
+      <a href="/projects" class="back-link">← Back to Projects</a>
+    </p>
+
+    <h1>{project?.title}</h1>
+
+    {project?.tagline && <p class="project-lede">{project.tagline}</p>}
+
+    {(project?.playDemoUrl || project?.websiteUrl) && (
+      <div class="project-actions">
+        {project.playDemoUrl && (
+          <a
+            href={project.playDemoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link btn-interactive"
+          >
+            Play Demo
+          </a>
+        )}
+
+        {project.websiteUrl && (
+          <a
+            href={project.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link btn-interactive"
+          >
+            Visit Website
+          </a>
+        )}
+      </div>
+    )}
+
+    {project?.about && project.about.length > 0 && (
+      <section class="project-section">
+        <h2>About the Game</h2>
+
+        <div class="project-copy">
+          {project.about.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {project?.team && project.team.length > 0 && (
+      <section class="project-section">
+        <h2>Team</h2>
+
+        <ul class="team-list">
+          {project.team.map((member) => (
+            <li>
+              <strong>{member.name}</strong> — {member.roles.join(", ")}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {project?.screenshots && project.screenshots.length > 0 && (
+      <section class="project-section">
+        <div class="screenshots-grid">
+          {project.screenshots.slice(0, 3).map((shot) => (
+            <button
+              type="button"
+              class="screenshot-card"
+              data-lightbox-src={shot.src}
+              data-lightbox-alt={shot.alt}
+            >
+              <img src={shot.src} alt={shot.alt} />
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
+  </section>
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+</Layout>
+
+<style>
+  .project-page {
+    padding: 2rem 0;
+  }
+
+  .back-link-wrap {
+    margin-bottom: 0.75rem;
+  }
+
+  .back-link {
+    font-weight: 600;
+  }
+
+  .project-lede {
+    margin: 0 0 1.75rem;
+    max-width: 800px;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .project-actions {
+    margin: 0 0 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-section {
+    margin-top: 2.5rem;
+    max-width: 850px;
+  }
+
+  .project-copy p {
+    margin: 0 0 1.25rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .team-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    line-height: 1.9;
+    color: var(--text);
+  }
+
+  .team-list li + li {
+    margin-top: 0.25rem;
+  }
+
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .screenshot-card {
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .screenshot-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: var(--radius);
+  }
+
+</style>
+
+<script>
+  function openLightbox(src: string, alt: string): void {
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightbox-img");
+
+    if (!(lightbox instanceof HTMLDivElement)) return;
+    if (!(img instanceof HTMLImageElement)) return;
+
+    img.src = src;
+    img.alt = alt;
+    lightbox.style.display = "flex";
+  }
+
+  function closeLightbox(): void {
+    const lightbox = document.getElementById("lightbox");
+
+    if (!(lightbox instanceof HTMLDivElement)) return;
+
+    lightbox.style.display = "none";
+  }
+
+  const screenshotCards = document.querySelectorAll(".screenshot-card");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  screenshotCards.forEach((card) => {
+    if (!(card instanceof HTMLButtonElement)) return;
+
+    card.addEventListener("click", () => {
+      const src = card.dataset.lightboxSrc;
+      const alt = card.dataset.lightboxAlt ?? "";
+
+      if (!src) return;
+
+      openLightbox(src, alt);
+    });
+  });
+
+  if (lightbox instanceof HTMLDivElement) {
+    lightbox.addEventListener("click", () => {
+      closeLightbox();
+    });
+  }
+
+  if (lightboxImg instanceof HTMLImageElement) {
+    lightboxImg.addEventListener("click", (event: MouseEvent) => {
+      event.stopPropagation();
+    });
+  }
+</script>

@@ -18,24 +18,24 @@ const {
 } = Astro.props;
 ---
 
-<article class="card">
+<a class="card" href={`/projects/${slug}`}>
   {image && (
     <div class="card-media">
-        <img
+      <img
         src={image}
         alt={imageAlt ?? `${title} screenshot`}
         style={`object-position: center ${imageOffsetY}%`}
-        />
+      />
     </div>
-    )}
+  )}
 
   <div class="card-body">
     <h3 class="card-title">{title}</h3>
 
     <p class="card-text">{shortDescription}</p>
 
-    <a class="card-link" href={`/projects/${slug}`}>
+    <p class="card-link">
       Learn more <span aria-hidden="true">→</span>
-    </a>
+    </p>
   </div>
-</article>
+</a>
