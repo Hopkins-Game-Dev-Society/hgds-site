@@ -81,14 +81,22 @@ const project = projects.find((p) => p.slug === "vesuvius");
       <section class="project-section">
         <div class="screenshots-grid">
           {project.screenshots.slice(0, 3).map((shot) => (
-            <div class="screenshot-card">
+            <button
+              type="button"
+              class="screenshot-card"
+              data-lightbox-src={shot.src}
+              data-lightbox-alt={shot.alt}
+            >
               <img src={shot.src} alt={shot.alt} />
-            </div>
+            </button>
           ))}
         </div>
       </section>
     )}
   </section>
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="" />
+  </div>
 </Layout>
 
 <style>
@@ -163,4 +171,72 @@ const project = projects.find((p) => p.slug === "vesuvius");
     aspect-ratio: 16 / 9;
     object-fit: cover;
   }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: var(--radius);
+  }
+
 </style>
+
+<script>
+  function openLightbox(src: string, alt: string): void {
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightbox-img");
+
+    if (!(lightbox instanceof HTMLDivElement)) return;
+    if (!(img instanceof HTMLImageElement)) return;
+
+    img.src = src;
+    img.alt = alt;
+    lightbox.style.display = "flex";
+  }
+
+  function closeLightbox(): void {
+    const lightbox = document.getElementById("lightbox");
+
+    if (!(lightbox instanceof HTMLDivElement)) return;
+
+    lightbox.style.display = "none";
+  }
+
+  const screenshotCards = document.querySelectorAll(".screenshot-card");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  screenshotCards.forEach((card) => {
+    if (!(card instanceof HTMLButtonElement)) return;
+
+    card.addEventListener("click", () => {
+      const src = card.dataset.lightboxSrc;
+      const alt = card.dataset.lightboxAlt ?? "";
+
+      if (!src) return;
+
+      openLightbox(src, alt);
+    });
+  });
+
+  if (lightbox instanceof HTMLDivElement) {
+    lightbox.addEventListener("click", () => {
+      closeLightbox();
+    });
+  }
+
+  if (lightboxImg instanceof HTMLImageElement) {
+    lightboxImg.addEventListener("click", (event: MouseEvent) => {
+      event.stopPropagation();
+    });
+  }
+</script>
