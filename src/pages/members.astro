@@ -1,0 +1,57 @@
+---
+import Layout from "@layouts/Layout.astro";
+import MemberCard from "@components/MemberCard.astro";
+import { members } from "../data/members";
+
+// Group members by classYear
+const groupedMembers = members.reduce((acc, member) => {
+  const year = member.classYear;
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(member);
+  return acc;
+}, {} as Record<string, typeof members>);
+
+// Sort years (e.g., Class of 2026 before Class of 2025)
+const sortedYears = Object.keys(groupedMembers).sort().reverse();
+---
+
+<Layout title="Members | Hopkins Game Dev Society">
+  <section>
+    <h1>Our Members</h1>
+    <p class="lede">
+      The students behind our games and community.
+    </p>
+  </section>
+
+  {sortedYears.map((year) => (
+    <section class="section">
+      <h2>{year}</h2>
+      <div class="members-grid">
+        {groupedMembers[year].map((member) => (
+          <MemberCard
+            name={member.name}
+            roles={member.roles}
+            games={member.games}
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+</Layout>
+
+<style>
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .members-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

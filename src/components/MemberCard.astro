@@ -1,0 +1,131 @@
+---
+interface Props {
+  name: string;
+  roles: string[];
+  games?: string[];
+}
+
+const { name, roles, games } = Astro.props;
+
+// Helper to check if a role is an officer role (ends with a date range like 25-26)
+const isOfficerRole = (role: string) => {
+  return /\d{2}[-\u2013\u2014]\d{2}\s*$/.test(role.trim());
+};
+
+// Helper to get a consistent color for a game name
+const getGameColor = (gameName: string) => {
+  const colors = [
+    "#e1bf89", // brand-gold
+    "#68ace5", // brand-blue-light
+    "#89e1c2", // mint
+    "#e189a8", // rose
+    "#b689e1", // lavender
+    "#e19d89", // coral
+  ];
+  let hash = 0;
+  for (let i = 0; i < gameName.length; i++) {
+    hash = gameName.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colors[Math.abs(hash) % colors.length];
+};
+---
+
+<div class="member-card">
+  <div class="member-info">
+    <h3 class="member-name">{name}</h3>
+    
+    <div class="tag-container roles">
+      {roles.map(role => (
+        <span class={`tag role-tag ${isOfficerRole(role) ? 'is-officer' : ''}`}>
+          {role}
+        </span>
+      ))}
+    </div>
+
+    {games && games.length > 0 && (
+      <div class="tag-container games">
+        <p class="tag-label">Games:</p>
+        {games.map(game => (
+          <span 
+            class="tag game-tag" 
+            style={`--game-color: ${getGameColor(game)}`}
+          >
+            {game}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+    height: 100%;
+  }
+
+  .member-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-blue-light);
+  }
+
+  .member-name {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.25rem;
+    color: var(--brand-blue);
+    font-family: "Ubuntu Mono", monospace;
+    font-weight: 700;
+  }
+
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag-label {
+    width: 100%;
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .role-tag {
+    background: var(--bg);
+    color: var(--brand-blue);
+    border: 1px solid var(--border);
+  }
+
+  .role-tag.is-officer {
+    background: var(--brand-gold);
+    color: var(--brand-blue);
+    border-color: #cfab70;
+    font-weight: 700;
+  }
+
+  .game-tag {
+    background: var(--game-color);
+    color: var(--brand-blue);
+    /* Slightly darken the background for better contrast if needed, 
+       or use a semi-transparent overlay */
+    background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2));
+  }
+</style>
