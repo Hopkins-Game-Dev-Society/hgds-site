@@ -49,7 +49,7 @@ export const members: Member[] = [
     games: ["Immunoblast", "Love Language", "Deja You", "Evershore"]
   },
   {
-    name: "Tori Starynski",
+    name: "Teddy Starynski",
     classYear: "Class of 2027",
     roles: ["Co-President '26-27", "Engineer", "Art"],
     games: ["Red Gold", "Sunfall", "Rain Doctor"],
