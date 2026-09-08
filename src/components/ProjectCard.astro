@@ -32,7 +32,7 @@ const {
   <div class="card-body">
     <h3 class="card-title">{title}</h3>
 
-    <p class="card-text">{shortDescription}</p>
+    {shortDescription && <p class="card-text">{shortDescription}</p>}
 
     <p class="card-link">
       Learn more <span aria-hidden="true">→</span>

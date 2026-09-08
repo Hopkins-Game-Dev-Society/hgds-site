@@ -1,13 +1,25 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { projects } from "../../data/projects";
+import type { Project } from "../../data/projects";
 
-const project = projects.find((p) => p.slug === "vesuvius");
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
 ---
 
-<Layout title={`${project?.title ?? "Project"} | Hopkins Game Dev Society`}>
+<Layout title={`${project.title} | Hopkins Game Dev Society`}>
   <section class="project-page">
-    {project?.image && (
+    {project.image && (
       <div class="project-hero">
         <img
           src={project.image}
@@ -21,11 +33,11 @@ const project = projects.find((p) => p.slug === "vesuvius");
       <a href="/projects" class="back-link">← Back to Projects</a>
     </p>
 
-    <h1>{project?.title}</h1>
+    <h1>{project.title}</h1>
 
-    {project?.tagline && <p class="project-lede">{project.tagline}</p>}
+    {project.tagline && <p class="project-lede">{project.tagline}</p>}
 
-    {(project?.playDemoUrl || project?.websiteUrl) && (
+    {(project.playDemoUrl || project.websiteUrl || project.links?.length) && (
       <div class="project-actions">
         {project.playDemoUrl && (
           <a
@@ -48,10 +60,21 @@ const project = projects.find((p) => p.slug === "vesuvius");
             Visit Website
           </a>
         )}
+
+        {project.links?.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-link btn-interactive"
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
     )}
 
-    {project?.about && project.about.length > 0 && (
+    {project.about && project.about.length > 0 && (
       <section class="project-section">
         <h2>About the Game</h2>
 
@@ -63,24 +86,27 @@ const project = projects.find((p) => p.slug === "vesuvius");
       </section>
     )}
 
-    {project?.team && project.team.length > 0 && (
+    {project.team && project.team.length > 0 && (
       <section class="project-section">
         <h2>Team</h2>
 
         <ul class="team-list">
           {project.team.map((member) => (
             <li>
-              <strong>{member.name}</strong> — {member.roles.join(", ")}
+              <strong>{member.name}</strong>
+              {member.roles.length > 0 && <> — {member.roles.join(", ")}</>}
             </li>
           ))}
         </ul>
       </section>
     )}
 
-    {project?.screenshots && project.screenshots.length > 0 && (
+    {project.screenshots && project.screenshots.length > 0 && (
       <section class="project-section">
+        <h2>Gallery</h2>
+
         <div class="screenshots-grid">
-          {project.screenshots.slice(0, 3).map((shot) => (
+          {project.screenshots.map((shot) => (
             <button
               type="button"
               class="screenshot-card"
@@ -149,27 +175,49 @@ const project = projects.find((p) => p.slug === "vesuvius");
     margin-top: 0.25rem;
   }
 
+  /* Fixed-height rows where each tile takes its image's natural width, so
+     mixed portrait / square / widescreen shots coexist without cropping */
   .screenshots-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
   }
 
   .screenshot-card {
+    padding: 0;
+    height: 280px;
+    max-width: 100%;
     overflow: hidden;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     background: var(--panel);
     box-shadow: var(--shadow);
+    cursor: zoom-in;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .screenshot-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brand-blue-light);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
   }
 
   .screenshot-card img {
     display: block;
-    width: 100%;
     height: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 640px) {
+    .screenshot-card {
+      height: 200px;
+    }
   }
 
   .lightbox {
@@ -233,6 +281,12 @@ const project = projects.find((p) => p.slug === "vesuvius");
       closeLightbox();
     });
   }
+
+  document.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+  });
 
   if (lightboxImg instanceof HTMLImageElement) {
     lightboxImg.addEventListener("click", (event: MouseEvent) => {

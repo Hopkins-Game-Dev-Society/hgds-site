@@ -40,7 +40,7 @@ export const members: Member[] = [
     name: "Benjamin Albeyta",
     classYear: "Class of 2027",
     roles: ["Outreach Chair '26-27", "Engineer", "Art"],
-    games: ["Rain Doctor", "Shepard of Dreams"]
+    games: ["Rain Doctor", "Shepherd of Dreams"]
   },
   {
     name: "Samuel Huang",
@@ -52,7 +52,7 @@ export const members: Member[] = [
     name: "Teddy Starynski",
     classYear: "Class of 2027",
     roles: ["Co-President '26-27", "Engineer", "Art"],
-    games: ["Red Gold", "Sunfall", "Rain Doctor"],
+    games: ["Red Gold", "Sunfall", "Rain Doctor", "Shelling Out", "Rogue Ricochet"],
   },
   {
     name: "Jiaming (Johnny) Shen",
@@ -64,12 +64,12 @@ export const members: Member[] = [
     name: "Brady Bock",
     classYear: "Class of 2027",
     roles: ["Co-President '26-27", "Engineer"],
-    games: ["Red Gold", "Sunfall"]
+    games: ["Red Gold", "Sunfall", "Shelling Out", "Rogue Ricochet"]
   },
   {
     name: "Marcus King",
     classYear: "Class of 2028",
-    roles: ["Chief of Operations '26-27", "Event Director '25-26", "Engineer", "Designer", "Art"],
+    roles: ["Event Director '25-26", "Engineer", "Designer", "Art"],
     games: ["Project Greyclaw", "Evershore"]
   },
   {

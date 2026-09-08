@@ -2,6 +2,12 @@
 import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../../data/projects";
+
+const activeProjects = projects.filter((project) => project.status !== "archived");
+
+const archivedProjects = projects
+  .filter((project) => project.status === "archived")
+  .sort((a, b) => a.title.localeCompare(b.title));
 ---
 
 <Layout title="Projects | Hopkins Game Dev Society">
@@ -14,7 +20,28 @@ import { projects } from "../../data/projects";
     </p>
 
     <div class="grid" style="margin-top: 1.5rem;">
-      {projects.map((project) => (
+      {activeProjects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          shortDescription={project.shortDescription}
+          slug={project.slug}
+          image={project.image}
+          imageAlt={project.imageAlt}
+          imageOffsetY={project.imageOffsetY}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Project Archive</h2>
+
+    <p class="lede">
+      Completed games and jam projects made by club members over the years.
+    </p>
+
+    <div class="grid" style="margin-top: 1.5rem;">
+      {archivedProjects.map((project) => (
         <ProjectCard
           title={project.title}
           shortDescription={project.shortDescription}

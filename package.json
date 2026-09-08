@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy:local": "./scripts/local-deploy.sh",
+    "deploy:remote": "./scripts/remote-deploy.sh",
     "astro": "astro"
   },
   "dependencies": {

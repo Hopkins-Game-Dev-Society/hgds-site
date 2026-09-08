@@ -2,6 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../data/projects";
+
+const activeProjects = projects.filter((project) => project.status !== "archived");
 ---
 
 <Layout title="Hopkins Game Dev Society">
@@ -22,7 +24,7 @@ import { projects } from "../data/projects";
     <h2>Active Projects</h2>
 
     <div class="grid">
-      {projects.map((project) => (
+      {activeProjects.map((project) => (
         <ProjectCard
           title={project.title}
           shortDescription={project.shortDescription}
