@@ -3,11 +3,13 @@ import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../../data/projects";
 
-const activeProjects = projects.filter((project) => project.status !== "archived");
-
-const archivedProjects = projects
-  .filter((project) => project.status === "archived")
-  .sort((a, b) => a.title.localeCompare(b.title));
+// One list: projects in active development lead, then completed games alphabetically
+const sortedProjects = [
+  ...projects.filter((project) => project.status !== "archived"),
+  ...projects
+    .filter((project) => project.status === "archived")
+    .sort((a, b) => a.title.localeCompare(b.title)),
+];
 ---
 
 <Layout title="Projects | Hopkins Game Dev Society">
@@ -15,37 +17,17 @@ const archivedProjects = projects
     <h1>Projects</h1>
 
     <p class="lede">
-      These are some of the games currently being developed by members of the
-      Hopkins Game Dev Society.
+      Games built by members of the Hopkins Game Dev Society — from projects in
+      active development to finished games and jam entries from years past.
     </p>
 
     <div class="grid" style="margin-top: 1.5rem;">
-      {activeProjects.map((project) => (
+      {sortedProjects.map((project) => (
         <ProjectCard
           title={project.title}
           shortDescription={project.shortDescription}
           slug={project.slug}
-          image={project.image}
-          imageAlt={project.imageAlt}
-          imageOffsetY={project.imageOffsetY}
-        />
-      ))}
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Project Archive</h2>
-
-    <p class="lede">
-      Completed games and jam projects made by club members over the years.
-    </p>
-
-    <div class="grid" style="margin-top: 1.5rem;">
-      {archivedProjects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          shortDescription={project.shortDescription}
-          slug={project.slug}
+          status={project.status}
           image={project.image}
           imageAlt={project.imageAlt}
           imageOffsetY={project.imageOffsetY}

@@ -1,24 +1,168 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { members } from "../data/members";
+
+// Officer roles in members.ts are tagged with their term, e.g. "Co-President '26-27".
+// Bump this one string when a new board takes over.
+const CURRENT_TERM = "'26-27";
+
+// Board display order; titles not listed here fall to the end alphabetically.
+const TITLE_ORDER = [
+  "Co-President",
+  "President",
+  "Chief of Operations",
+  "Technical Director",
+  "Producer",
+  "Community Manager",
+  "Outreach Chair",
+  "Event Director",
+  "Treasurer",
+];
+
+const rank = (title: string) => {
+  const index = TITLE_ORDER.indexOf(title);
+  return index === -1 ? TITLE_ORDER.length : index;
+};
+
+const board = members
+  .flatMap((member) =>
+    member.roles
+      .filter((role) => role.includes(CURRENT_TERM))
+      .map((role) => ({
+        name: member.name,
+        title: role.replace(CURRENT_TERM, "").trim(),
+        photo: member.photo,
+      }))
+  )
+  .sort((a, b) => rank(a.title) - rank(b.title) || a.name.localeCompare(b.name));
 ---
 
 <Layout title="About | Hopkins Game Dev Society">
   <section>
-    <h1>About Us</h1>
+    <h1>Who We Are</h1>
 
     <p class="lede">
-      The Hopkins Game Dev Society is a student organization at Johns Hopkins University
-      focused on bringing together students interested in game development, design, art,
-      programming, audio, and interactive storytelling.
+      At the Johns Hopkins Game Development Society, we’re all about empowering
+      students to create in the world of video games.
     </p>
 
     <p class="lede">
-      We support collaborative student projects, help members build practical skills,
-      and create a space for people to learn, experiment, and make games together.
+      Our mission is to foster learning, collaboration, and professional growth.
+      From hands-on workshops that teach game development skills beyond the
+      classroom, to a welcoming community for teaming up on projects, to
+      career-building events for aspiring game industry professionals, we provide
+      the support to help you level up.
+    </p>
+  </section>
+
+  {board.length > 0 && (
+    <section class="section">
+      <h2>The Board</h2>
+
+      <p class="lede">
+        The students running the club this year. Reach out to any of us if you have
+        questions about getting involved.
+      </p>
+
+      <div class="board-grid">
+        {board.map((officer) => (
+          <div class="board-card">
+            {officer.photo && (
+              <div class="board-photo">
+                <img src={officer.photo} alt={officer.name} />
+              </div>
+            )}
+
+            <h3 class="board-name">{officer.name}</h3>
+            <p class="board-title">{officer.title}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <h2>Get Involved</h2>
+
+    <p class="lede">
     </p>
 
-    <p style="margin-top: 1.5rem;">
-      <a class="button-link btn-interactive" href="/projects">View our projects</a>
+    <div class="about-actions">
+      <a
+        class="button-link btn-interactive"
+        href="https://discord.gg/XnWkcpeRhp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join our Discord
+      </a>
+      <a class="button-link btn-interactive" href="/projects">See our projects</a>
+    </div>
+
+    <p class="contact-line">
+      Questions? Email us at
+      <a href="mailto:hopkinsgamedevclub@gmail.com">hopkinsgamedevclub@gmail.com</a>.
     </p>
   </section>
 </Layout>
+
+<style>
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .board-card {
+    padding: 1.5rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--brand-gold);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  /* Dormant until a member gets a `photo` in members.ts */
+  .board-photo {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+  }
+
+  .board-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .board-name {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+  }
+
+  .board-title {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-line {
+    margin-top: 1.5rem;
+    color: var(--muted);
+  }
+</style>

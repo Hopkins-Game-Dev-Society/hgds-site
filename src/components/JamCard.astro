@@ -1,0 +1,141 @@
+---
+import type { Jam } from "../data/jams";
+import { getGameColor } from "../utils/gameColor";
+import { getGameHref } from "../utils/gameLink";
+
+interface Props {
+  jam: Jam;
+}
+
+const { jam } = Astro.props;
+---
+
+<article class="card jam-card">
+  <div class="card-body">
+    <div class="jam-header">
+      <h3 class="card-title">{jam.name}</h3>
+      <span class={`jam-role ${jam.role === "hosted" ? "is-hosted" : ""}`}>
+        {jam.role === "hosted" ? "Hosted by HGDS" : "Participated"}
+      </span>
+    </div>
+
+    <p class="jam-meta">
+      {jam.timeframe}{jam.location && ` · ${jam.location}`}
+    </p>
+
+    {jam.description && <p class="card-text">{jam.description}</p>}
+
+    {jam.games && jam.games.length > 0 && (
+      <div class="jam-games">
+        <p class="jam-label">Games made</p>
+        {jam.games.map((game) => (
+          <a
+            class="jam-game-tag"
+            href={getGameHref(game)}
+            style={`--game-color: ${getGameColor(game)}`}
+          >
+            {game}
+          </a>
+        ))}
+      </div>
+    )}
+
+    {jam.link && (
+      <a
+        class="jam-link"
+        href={jam.link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Jam page <span aria-hidden="true">→</span>
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  /* Jam cards aren't links, so neutralize the global .card hover effect */
+  .jam-card:hover {
+    transform: none;
+    border-color: var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .jam-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .jam-role {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--brand-blue);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .jam-role.is-hosted {
+    background: var(--brand-gold);
+    border-color: #cfab70;
+  }
+
+  .jam-meta {
+    margin: 0.25rem 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .jam-games {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .jam-label {
+    width: 100%;
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .jam-game-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: var(--game-color);
+    color: var(--brand-blue);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    text-decoration: none;
+    transition: background-image 0.15s ease, transform 0.15s ease;
+  }
+
+  .jam-game-tag:hover {
+    color: var(--brand-blue);
+    background-image: none;
+    transform: translateY(-1px);
+  }
+
+  .jam-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    margin-top: auto;
+  }
+</style>

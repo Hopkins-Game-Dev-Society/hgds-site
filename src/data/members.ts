@@ -3,6 +3,9 @@ export interface Member {
   classYear: string;
   roles: string[];
   games?: string[];
+  // Optional headshot, e.g. "/images/board/brady.jpg" — shown on the About
+  // page board section for current officers when present.
+  photo?: string;
 }
 
 export const members: Member[] = [

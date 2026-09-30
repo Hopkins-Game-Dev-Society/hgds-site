@@ -28,8 +28,6 @@ export interface Project {
 
   tagline?: string
 
-  playDemoUrl?: string
-  websiteUrl?: string
   links?: ExternalLink[]
 
   about?: string[]
@@ -196,8 +194,20 @@ export const projects: Project[] = [
     tagline:
       "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius, its mysterious cult, and the strange forces twisting its depths.",
 
-    playDemoUrl: "https://l1ryx.itch.io/vesuvius",
-    websiteUrl: "https://vesuviusgame.com",
+    links: [
+      {
+        label: "Play Demo",
+        url: "https://l1ryx.itch.io/vesuvius"
+      },
+      {
+        label: "Visit Website",
+        url: "https://vesuviusgame.com"
+      },
+      {
+        label: "Steam Page",
+        url: "https://store.steampowered.com/app/4557830/Vesuvius/"
+      }
+    ],
 
     about: [
       "Set on a reimagined Mt. Vesuvius, you are to uncover the mystery of a vanished cult that disappeared into the mountain years ago. Within its depths, you will traverse a series of biomes that defy logic — lush forests, icy caves, tranquil lakes, and more — all hidden beneath the snow. Reality often bends, leaving questions on what is real as you navigate shifting landscapes and uncover the mountain’s secrets.",
@@ -233,6 +243,7 @@ export const projects: Project[] = [
   {
     slug: "merchant-squabble",
     title: "Merchant Squabble",
+    status: "archived",
     shortDescription:
       "A long-term strategy card game where players build paths to collect resources and outmaneuver rivals.",
     image: "/images/projects/merchant-cover.png",

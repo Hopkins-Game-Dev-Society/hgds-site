@@ -15,6 +15,9 @@ interface Props {
 }
 
 const { project } = Astro.props;
+
+// Projects still awaiting real write-ups show an under-construction note
+const needsContent = !project.about || project.about.length === 0;
 ---
 
 <Layout title={`${project.title} | Hopkins Game Dev Society`}>
@@ -37,31 +40,9 @@ const { project } = Astro.props;
 
     {project.tagline && <p class="project-lede">{project.tagline}</p>}
 
-    {(project.playDemoUrl || project.websiteUrl || project.links?.length) && (
+    {project.links && project.links.length > 0 && (
       <div class="project-actions">
-        {project.playDemoUrl && (
-          <a
-            href={project.playDemoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button-link btn-interactive"
-          >
-            Play Demo
-          </a>
-        )}
-
-        {project.websiteUrl && (
-          <a
-            href={project.websiteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button-link btn-interactive"
-          >
-            Visit Website
-          </a>
-        )}
-
-        {project.links?.map((link) => (
+        {project.links.map((link) => (
           <a
             href={link.url}
             target="_blank"
@@ -72,6 +53,15 @@ const { project } = Astro.props;
           </a>
         ))}
       </div>
+    )}
+
+    {needsContent && (
+      <p class="under-construction">
+        <strong>This page is under construction.</strong> We're still gathering a
+        write-up, screenshots, and full credits for this project. If you worked on
+        it and can help fill in the blanks, let us know in our
+        <a href="https://discord.gg/XnWkcpeRhp" target="_blank" rel="noopener noreferrer">Discord</a>.
+      </p>
     )}
 
     {project.about && project.about.length > 0 && (
@@ -151,6 +141,22 @@ const { project } = Astro.props;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .under-construction {
+    max-width: 800px;
+    margin: 0 0 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--brand-gold);
+    border-radius: var(--radius);
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .under-construction strong {
+    color: var(--text);
   }
 
   .project-section {

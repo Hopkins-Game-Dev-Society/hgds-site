@@ -1,9 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import { projects } from "../data/projects";
+import JamCard from "@components/JamCard.astro";
+import { jams } from "../data/jams";
 
-const activeProjects = projects.filter((project) => project.status !== "archived");
+const recentJams = jams.slice(0, 3);
 ---
 
 <Layout title="Hopkins Game Dev Society">
@@ -15,25 +15,91 @@ const activeProjects = projects.filter((project) => project.status !== "archived
       programmers, and audio creators.
     </p>
 
-    <p style="margin-top: 1.5rem;">
+    <div class="hero-actions">
+      <a
+        class="button-link btn-interactive"
+        href="https://discord.gg/XnWkcpeRhp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join our Discord
+      </a>
       <a class="button-link btn-interactive" href="/about">About us</a>
-    </p>
+    </div>
   </section>
 
   <section class="section">
-    <h2>Active Projects</h2>
+    <h2>What We Do</h2>
 
     <div class="grid">
-      {activeProjects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          shortDescription={project.shortDescription}
-          slug={project.slug}
-          image={project.image}
-          imageAlt={project.imageAlt}
-          imageOffsetY={project.imageOffsetY}
-        />
-      ))}
+      <div class="pillar">
+        <h3>Workshops</h3>
+        <p>
+          Hands on workshops that teach game development skills beyond the
+          classroom.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3>Collaboration</h3>
+        <p>
+          A welcoming community for teaming up on projects. Open to all skill levels!
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3>Careers</h3>
+        <p>
+          Career building events for aspiring game industry professionals.
+        </p>
+      </div>
     </div>
   </section>
+
+  <section class="section">
+    <h2>Game Jams</h2>
+
+    <p class="lede">
+      We host our
+      own on campus and host coworking sessions throughout the year. Many of the games in
+      our archive started as jam entries.
+    </p>
+
+    {recentJams.length > 0 && (
+      <div class="grid" style="margin-top: 1.5rem;">
+        {recentJams.map((jam) => <JamCard jam={jam} />)}
+      </div>
+    )}
+
+    <p style="margin-top: 1.5rem;">
+      <a class="button-link btn-interactive" href="/jams">See our jams</a>
+    </p>
+  </section>
 </Layout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .pillar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+  }
+
+  .pillar h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+</style>
