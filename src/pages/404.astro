@@ -1,0 +1,30 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Page Not Found | Hopkins Game Dev Society">
+  <section>
+    <h1>Page Not Found</h1>
+
+    <p class="lede">
+      We couldn't find that page. It may have moved when we rebuilt the site, or
+      the link might be mistyped.
+    </p>
+
+    <div class="not-found-actions">
+      <a class="button-link btn-interactive" href="/">Home</a>
+      <a class="button-link btn-interactive" href="/projects">Projects</a>
+      <a class="button-link btn-interactive" href="/jams">Jams</a>
+      <a class="button-link btn-interactive" href="/members">Members</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+</style>
