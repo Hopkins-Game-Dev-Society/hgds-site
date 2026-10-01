@@ -113,17 +113,19 @@ export const projects: Project[] = [
     slug: "immunoblast",
     title: "Immunoblast",
     shortDescription:
-      "A 2D action game that combines combat with a unique journey through the microscopic battleground of the human immune system.",
+      "An immune system action game.",
     image: "/images/projects/immunoblast-cover.png",
     imageAlt: "Immunoblast Cover Art",
 
     tagline:
-      "An innovative 2D action game that combines combat with a unique journey through the microscopic battleground of the human immune system.",
+      "An immune system action game.",
 
     about: [
+      "Winner of the Hopkins Game Dev Society 2024 Game Design Jam",
       "Unlike traditional \"edutainment\" titles, which often feel more like chores than entertainment, Immunoblast blends fast-paced, skill-based combat and immersive storytelling with real-world biological accuracy. The game draws inspiration from titles like Armored Core VI, Dead Cells, and Risk of Rain, delivering 2D action elements, powerful build making, and mission-based combat levels, while secretly teaching players about the immune system.",
-      "Players take on the role of AC-018 \"Panacea,\" an adaptive bio-robot tasked with protecting a human host from infections, cancer, and autoimmune conditions. Core mechanics include acquiring and upgrading \"genetic abilities,\" each inspired by real-world biology, such as cytokine pathways, viral gene suppression, and antibody weaponry. Panacea deploys for missions all across the body, but sometimes you must choose where to deploy, impacting the story. In a combat perspective, the game's Inflammation system offers players a risk-reward balance, with inflammation making them stronger but at the cost of destabilizing the host.",
-      "Immunoblast merges authentic scientific concepts with deep gameplay and emotional storytelling. Interact with the intricate network of characters that is our immune system. Learn about the science behind your powerful weaponry. Explore the shadows and ethics of the Adaptive Cell project. Are you prepared to uncover the truth, face impossible choices, and..."
+      "Players take on the role of AC-018 \"Panacea,\" an adaptive bio-robot tasked with protecting a human host from infections, cancer, and autoimmune conditions. Core mechanics include acquiring and combining \"genetic abilities,\" each inspired by real-world biology, such as cytokine pathways, viral suppression, and antibody weaponry. Panacea deploys for missions all across the body, but sometimes you must choose where to deploy, impacting the story. In a combat perspective, the game’s Inflammation system offers players a risk-reward balance, with inflammation making Panacea stronger but at the cost of destabilizing itself.",
+      "Immunoblast merges authentic scientific concepts with deep gameplay and emotional storytelling. Interact with the intricate network of characters that is our immune system. Learn about the science behind your powerful weaponry. Explore the shadows and ethics of the Adaptive Cell project. Are you prepared to uncover the truth, face impossible choices, and...",
+      "...become the cure?"
     ],
 
     team: [
@@ -175,15 +177,15 @@ export const projects: Project[] = [
     screenshots: [
       {
         src: "/images/projects/immunoblast-shot-1.png",
-        alt: "Immunoblast splash art"
+        alt: "Immunoblast screenshot 1"
       },
       {
         src: "/images/projects/immunoblast-shot-2.png",
-        alt: "Immunoblast emblem designs 1"
+        alt: "Immunoblast screenshot 2"
       },
       {
         src: "/images/projects/immunoblast-shot-3.png",
-        alt: "Immunoblast emblem designs 2"
+        alt: "Immunoblast screenshot 3"
       }
     ]
   },
@@ -191,12 +193,12 @@ export const projects: Project[] = [
     slug: "vesuvius",
     title: "Vesuvius",
     shortDescription:
-      "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius and the strange forces twisting its depths.",
+      "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius and its mysterious cult.",
     image: "/images/projects/vesuvius-cover.png",
     imageAlt: "Vesuvius Cover Art",
 
     tagline:
-      "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius, its mysterious cult, and the strange forces twisting its depths.",
+      "A surreal metroidvania where you uncover the secrets of a snowy Mt. Vesuvius and its mysterious cult.",
 
     links: [
       {
@@ -214,8 +216,10 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "Set on a reimagined Mt. Vesuvius, you are to uncover the mystery of a vanished cult that disappeared into the mountain years ago. Within its depths, you will traverse a series of biomes that defy logic — lush forests, icy caves, tranquil lakes, and more — all hidden beneath the snow. Reality often bends, leaving questions on what is real as you navigate shifting landscapes and uncover the mountain’s secrets.",
-      "You will navigate the world through precise platforming, engage in combat with mysterious foes, embark on quests with enigmatic NPCs, and uncover the story woven into the mountain’s surreal environments. Along the way, you’ll discover new abilities that allow you to explore further, unlocking secrets hidden in every corner of this sprawling, interconnected world."
+      "Set on a reimagined Mt. Vesuvius, you are to uncover the mystery of a vanished cult that disappeared into the mountain years ago. Within its depths, you will traverse a series of biomes that defy logic — lush forests, icy caves, tranquil lakes, and more — all hidden beneath the snow. Reality will bend, leaving questions on what is real as you navigate shifting landscapes and uncover the mountain’s secrets.",
+      "This is an early demo of Vesuvius! This version (v0.2.0) showcases core mechanics such as movement, combat, exploration, and early sound design. It serves as a testbed for gameplay features and doesn't fully represent the final game's world, visuals, or story.",
+      "The objective is to explore the environment and interact with the systems while progressing to the designated endpoint. The expected playtime is ~15 minutes.",
+      "This is a work-in-progress demo, and you may encounter bugs or incomplete features. You can report a bug from the main menu."
     ],
 
     team: [
@@ -232,15 +236,19 @@ export const projects: Project[] = [
     screenshots: [
       {
         src: "/images/projects/vesuvius-shot-1.png",
-        alt: "Vesuvius gameplay screenshot 1"
+        alt: "Vesuvius screenshot 1"
       },
       {
         src: "/images/projects/vesuvius-shot-2.png",
-        alt: "Vesuvius gameplay screenshot 2"
+        alt: "Vesuvius screenshot 2"
       },
       {
         src: "/images/projects/vesuvius-shot-3.png",
-        alt: "Vesuvius gameplay screenshot 3"
+        alt: "Vesuvius screenshot 3"
+      },
+      {
+        src: "/images/projects/vesuvius-shot-4.png",
+        alt: "Vesuvius screenshot 4"
       }
     ]
   },
@@ -382,9 +390,9 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You can't afford to renew your Pro subscription, and now when you fall asleep, your BrainaSync chip monetizes your mind. In your dreams, hyper-personalized ads swarm your thoughts and grow smarter the longer they study you.",
-      "Use ADBLOCK BOMBS to blast through the noise and protect what little free-trial brain oxygen you have left. Survive the night and reclaim your mind.",
-      "Made by Shawn Guo, Carly Wang, Patrick Sullivan, and Prakhar Prakhar in 48 hours for Ctrl + Alt + DMV 2026."
+      "“Free tier includes ads during REM sleep.” — BrainaSync™ Support You can't afford to renew your Pro subscription, and now when you fall asleep, your BrainaSync™ chip monetizes your mind.",
+      "In your dreams, hyper-personalized ads swarm your thoughts. They grow smarter and more invasive the longer they study you. Use ADBLOCK BOMBS to blast through the noise and protect what little (free trial) brain oxygen you have left.",
+      "Survive the night and reclaim your mind."
     ],
 
     team: [
@@ -458,9 +466,9 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You exist on a timeline that loops. Each time you rewind, a new Lifetime spawns and replays your past actions. You have a limited Time Budget, and every second you spend eats into it.",
-      "The puzzles are about cooperating with yourself across timelines. Fifteen levels, inspired by Maslow's hierarchy, take you from survival to self-actualization, one lifetime at a time.",
-      "Built by members of the Johns Hopkins Game Development Society in four days for the 2025 GMTK Game Jam."
+      "In any given moment we have two options: to step forward into growth or to step back into safety. -Abraham Maslow You exist in a fixed world timeline that loops every X seconds. Each time you rewind, a new Lifetime spawns, replaying your past actions.",
+      "But there’s a twist: You have a limited Time Budget. Every second you use eats into it.",
+      "Solve puzzles not by mastering movement, but by mastering cooperation across timelines. Across 15 levels inspired by Maslow’s Hierarchy, you'll rise from survival to self-actualization, one lifetime at a time."
     ],
 
     team: [
@@ -543,9 +551,11 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You are a planetary field researcher stationed far from home. The ducks in your care have wandered across a distant solar system, and this is a short experience that will be over before you know it.",
-      "To bring them back, you prepare meals from sealed packs of HARDWORMS, magnetic supplies you cannot split or combine by hand. The ducks will only eat an exact portion. Ancient machines on each planet are the only way to turn what you have into what they will take.",
-      "The itch demo is the first act."
+      "“This is a short experience. It will be over before you know it.”",
+      "— You, to yourself",
+      "You are a planetary field researcher stationed far from home. The ducks in your care have wandered across a distant solar system.",
+      "To bring them back, you’ll prepare meals from sealed packs of HARDWORMS, highly magnetic resources that can’t be split or combined by hand. Your ducks insist on eating exact portions: not any more, not any less.",
+      "Ancient machines scattered across each planet are the only way to transform what you have into what you need. Learn how each mechanism changes your supply and lure each duck out, one quiet planet at a time."
     ],
 
     team: [
@@ -623,8 +633,8 @@ export const projects: Project[] = [
 
     about: [
       "Lull, Wind, Flame, and Blood. Evershore is a quiet isometric island game about routines, rituals, and waiting for the sea to change.",
-      "Explore a small village, break windmills, light lanterns, dispel annoyances, and help the locals prepare for departure. When the water finally stills, make sure you are ready for what comes next.",
-      "Built for the fall 2025 computer graphics course at Johns Hopkins."
+      "Explore a small village, break windmills, light lanterns, dispel annoyances, and help the locals prepare for departure.",
+      "When the water finally stills, make sure you’re ready for what comes next."
     ],
 
     team: [
@@ -662,12 +672,12 @@ export const projects: Project[] = [
     title: "Hijax",
     status: "archived",
     shortDescription:
-      "Play a parasite attempting to reach its host's brain.",
+      "spread to the brain",
     image: "/images/projects/hijax-cover.png",
     imageAlt: "Hijax Cover Art",
 
     tagline:
-      "Play a parasite attempting to reach its host's brain.",
+      "spread to the brain",
 
     links: [
       {
@@ -677,8 +687,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "Play a parasite attempting to reach its host's brain. Spread into an adjacent pathway or organ, strengthen an infection you already hold, and bring the fever to level 3 so you can cross the blood-brain barrier.",
-      "The higher the fever, the harder the immune system fights back. Made by Megan and Seiya Lincicum for the 2026 Ctrl + Alt + DMV game jam."
+      "Play a parasite attempting to reach its host's brain."
     ],
 
     team: [
@@ -712,9 +721,15 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You ever notice how coffee shops sound like the universe? Constant background noise, with little bursts of chaos. You have always struggled to put yourself out there, but you finally have a date. Talk with them. They seem like a good person, right?",
-      "The night turns on you. The page insists that no, that's just you, they are definitely not the problem, and you should not panic.",
-      "Built by the Johns Hopkins Game Development Society in six days for the 2025 Itch Scream Jam."
+      "You ever notice how coffee shops sound like the universe? Constant background noise, with little bursts of chaos.",
+      "Time to break out of your shell! You've always struggled to put yourself out there, but your chance is finally there- you have a date!",
+      "Talk with them! They seem like a good person, right...?",
+      "...",
+      "No?",
+      "Why?",
+      "N̶o̶,̵ ̶t̸h̷a̴t̴'̸s̶ ̸j̵u̷s̵t̵ ̶y̶o̷u̶.̴.̴.̸.̷",
+      "T̷h̷e̵y̷ ̸a̴r̴e̶ ̵d̷e̷f̷i̴n̵i̴t̵e̴l̴y̸ ̶n̴o̸t̸.̸",
+      "D̵̙̊Ö̵̰́N̶͖͠'̷̱̌T̶̰͊ ̴͉̓P̵͌͜A̷̡͛N̵̯̔I̸̦̕C̴͇͑!"
     ],
 
     team: [
@@ -790,7 +805,7 @@ export const projects: Project[] = [
     title: "Project Ingenuity",
     status: "archived",
     shortDescription:
-      "Salvage parts, design a vehicle, and explore an alien wilderness.",
+      "Salvage parts, design a vehicle and explore alien wilderness in an open world sandbox.",
     image: "/images/projects/project-ingenuity-cover.png",
     imageAlt: "Project Ingenuity Cover Art",
 
@@ -805,8 +820,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "Published on itch as Mission Ingenuity. You are the command module of a defunct rover and wake up in the middle of nowhere on an alien planet with no parts attached.",
-      "Scavenge scattered parts, upgrade the rover, fight the things that live out there, and build a rocket that gets you off the planet so you can keep exploring."
+      "You are the command module of a defunct rover and find yourself booting up in the middle of nowhere on an alien planet with no parts attached to you. You need to scavenge for parts scattered around and upgrade your rover, fight hostile enemies of various kinds and build a rocket that will get you out of here to continue your quest for exploration."
     ],
 
     team: [
@@ -845,7 +859,8 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "Project currently in development by the Hopkins Game Development Society. The itch page is a placeholder and points to the devlog for updates."
+      "Project currently in development by the Hopkins Game Development Society.",
+      "Check out our Devlog for updates!"
     ],
 
     team: [
@@ -903,7 +918,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You play as an alien parasite that has taken over a host. The parasite launches attacks made of the host's blood, steadily draining its supply. Kill enemies to replenish that blood. They are trying to kill you too, before the parasite spreads."
+      "In Red Gold, you play as an alien parasite that has taken over a host. The parasite launches attacks made of the host's blood, steadily draining its supply. You must kill enemies in order to replenish your diminishing blood supply. But be careful, theyre trying to kill you, too, to prevent the parasite from spreading across the world!"
     ],
 
     team: [
@@ -916,13 +931,21 @@ export const projects: Project[] = [
         roles: []
       }
     ],
+
+    screenshots: [
+      {
+        src: "/images/projects/red-gold-shot-1.png",
+        alt: "Red Gold screenshot 1"
+      }
+    ]
   },
+
   {
     slug: "rogue-ricochet",
     title: "Rogue Ricochet",
     status: "archived",
     shortDescription:
-      "A top-down shooter where your bullets ricochet.",
+      "Top down shooter where your bullets ricochet.",
     image: "/images/projects/rogue-ricochet-cover.png",
     imageAlt: "Rogue Ricochet Cover Art",
 
@@ -937,8 +960,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You were a lab researcher working on a super-strong, super-bouncy rubber, and you were kicked out for wanting to make weapons with it. Supplies of the bullets you already made are running low, so you break back into the lab to steal more.",
-      "Turrets guard the place. The bullets ricochet off everything, and they will hurt you if you are not careful."
+      "You were once a researcher in a lab working on new, super strong, super bouncy rubber, but you were kicked out for your ideas on how to make weapons with the new material! You have some bullets made from the material but supplies are running a little low, you've broken into your old lab to steal some more. The lab is guarded by turrets, so you need to fight your way through the lab to reach the coveted rubber. Be careful though! The bullets are very bouncy and will ricochet off everything, hurting you if you're not careful!"
     ],
 
     team: [
@@ -972,7 +994,8 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "A clicker about finding shells on the beach. Progress autosaves."
+      "A Clicker game where you're trying to find shells on the beach.",
+      "Your progress autosaves. Press \"q\" at any time to quit(local not web build)."
     ],
 
     team: [
@@ -1021,9 +1044,11 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You wake up on the day before your 22nd birthday. A new law says anyone still unemployed at 22 will be hunted down and shot, and you are still unemployed.",
-      "You have 10 minutes. Finish the job application before time runs out. Click the on-screen buttons, and search for the clues that let you fill it out. The in-game username has a typo: \"haven\" is supposed to be \"heaven.\"",
-      "Made for GMTK 2026."
+      "You wake up, another soulless and dull day gone down the drain, but then you remember... it's your birthday tomorrow your 22nd birthday...",
+      "A new law has been passed declaring that anyone who is unemployed once they turn 22 will be hunted down and shot! And you are still unemployed!",
+      "With only 10 minutes left before the end of your life you rush to the computer.",
+      "All you need to do to survive is complete the job application before you turn 22. But as we all know, that's easier said than done.",
+      "IMPORTANT NOTE: for the in-game username, \"haven\" is supposed to be \"heaven\". Apologies for the typo!"
     ],
 
     team: [
@@ -1077,7 +1102,7 @@ export const projects: Project[] = [
         alt: "Apply or Die! screenshot 1"
       },
       {
-        src: "/images/projects/apply-or-die-shot-2.gif",
+        src: "/images/projects/apply-or-die-shot-2.png",
         alt: "Apply or Die! screenshot 2"
       },
       {
@@ -1107,7 +1132,7 @@ export const projects: Project[] = [
     title: "Farm Tower TD Defense",
     status: "archived",
     shortDescription:
-      "Plant crops, place towers, protect your family.",
+      "Plant crops, place towers, protect your family!",
     image: "/images/projects/farm-tower-cover.png",
     imageAlt: "Farm Tower TD Defense Cover Art",
 
@@ -1122,8 +1147,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "You are a farmer settling a frontier world. The land grows well, and hungry monsters wait in the dark for the crops and the livestock.",
-      "Farm during the day to earn money, then buy towers and hold the farm through the night. Manage the time, or you and the crops do not make it."
+      "You are a farmer on a frontier world settling the land. However, there are hungry monsters lurking in the shadows waiting to eat your crops and livestock. But the land is really good for growing crops. Get money by farming during the daytime and buying towers to defend your land from the monsters at night. You’ll have to manage your time wisely, fight bravely, and act strategically to ensure the survival of yourself and your crops."
     ],
 
     team: [
@@ -1168,8 +1192,7 @@ export const projects: Project[] = [
     ],
 
     about: [
-      "Welcome to Lasso Lake, a cattle ranch that lost its fence in a storm. The fences are back up. The cattle are not.",
-      "Lasso one cow at a time and get it back to the pen. Made for GMTK 2025."
+      "Howdy partner! Welcome to Lasso Lake, the most prestigious cattle ranch this side of the mississippi. Now, normally we're not so disorganized and would have a proper welcome party for your first day, but a storm blew in last night and knocked down all our fence. We managed to get them back up, but we're in some dire need of help lassoin' those cattle and getting them back to their pen. Can you help us out?"
     ],
 
     team: [
