@@ -2,9 +2,11 @@ export interface Jam {
   name: string
   // e.g. "Fall 2025" or "Jan 24-26, 2025". Omit if the date isn't confirmed.
   timeframe?: string
-  // "hosted" = run by HGDS; "participated" = an external jam members joined
-  role: "hosted" | "participated"
+  // "hosted" = run by HGDS; "participated" = an external jam members joined.
+  // Omit to show no role badge at all (e.g. a jam that is neither, or unconfirmed).
+  role?: "hosted" | "participated"
   location?: string
+  // Optional — omit for a bare name/date entry with no blurb
   description?: string
   // external jam page (itch.io, Global Game Jam, etc.)
   link?: string
@@ -18,30 +20,24 @@ export const jams: Jam[] = [
     name: "Ctrl + Alt + DMV",
     timeframe: "2026",
     role: "participated",
-    description:
-      "A regional game jam for developers across the DMV area. Our teams built two games over a single weekend.",
-    games: ["ADSOMNIA!", "Hijax"],
+    games: ["ADSOMNIA!", "Hijax", "Red Gold"],
   },
   {
     name: "Itch Scream Jam",
     timeframe: "2025",
     role: "participated",
-    description:
-      "A horror-themed jam. Members from across the society spent six days building Love Language together.",
     games: ["Love Language"],
   },
   {
     name: "GMTK Game Jam",
     timeframe: "2025",
     role: "participated",
-    description:
-      "Game Maker's Toolkit's annual jam, one of the largest in the world. Built in four days.",
     games: ["Deja You"],
   },
   {
     name: "Mini Jam 187: Duality",
     role: "participated",
-    description: "A short themed jam built around duality.",
+    description: "",
     games: ["Rogue Ricochet"],
   },
   {
@@ -53,8 +49,6 @@ export const jams: Jam[] = [
     name: "HGDS Game Design Jam",
     timeframe: "2024",
     role: "hosted",
-    description:
-      "Our own on-campus design jam. Immunoblast took first place and is still in development today.",
     games: ["Immunoblast"],
   },
 ]

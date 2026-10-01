@@ -2,9 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import JamCard from "@components/JamCard.astro";
 import { jams } from "../data/jams";
-
-const hostedJams = jams.filter((jam) => jam.role === "hosted");
-const joinedJams = jams.filter((jam) => jam.role === "participated");
 ---
 
 <Layout title="Game Jams | Hopkins Game Dev Society">
@@ -27,23 +24,12 @@ const joinedJams = jams.filter((jam) => jam.role === "participated");
     </section>
   )}
 
-  {hostedJams.length > 0 && (
+  {jams.length > 0 && (
     <section class="section">
-      <h2>Hosted by HGDS</h2>
-
-      <div class="grid" style="margin-top: 1.5rem;">
-        {hostedJams.map((jam) => <JamCard jam={jam} />)}
+      <div class="grid">
+        {jams.map((jam) => <JamCard jam={jam} />)}
       </div>
     </section>
   )}
 
-  {joinedJams.length > 0 && (
-    <section class="section">
-      <h2>Jams We've Joined</h2>
-
-      <div class="grid" style="margin-top: 1.5rem;">
-        {joinedJams.map((jam) => <JamCard jam={jam} />)}
-      </div>
-    </section>
-  )}
 </Layout>

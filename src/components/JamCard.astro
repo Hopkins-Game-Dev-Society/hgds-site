@@ -14,9 +14,11 @@ const { jam } = Astro.props;
   <div class="card-body">
     <div class="jam-header">
       <h3 class="card-title">{jam.name}</h3>
-      <span class={`jam-role ${jam.role === "hosted" ? "is-hosted" : ""}`}>
-        {jam.role === "hosted" ? "Hosted by HGDS" : "Participated"}
-      </span>
+      {jam.role && (
+        <span class={`jam-role ${jam.role === "hosted" ? "is-hosted" : ""}`}>
+          {jam.role === "hosted" ? "Hosted by HGDS" : "Participated"}
+        </span>
+      )}
     </div>
 
     {(jam.timeframe || jam.location) && (
