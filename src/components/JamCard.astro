@@ -19,9 +19,11 @@ const { jam } = Astro.props;
       </span>
     </div>
 
-    <p class="jam-meta">
-      {jam.timeframe}{jam.location && ` · ${jam.location}`}
-    </p>
+    {(jam.timeframe || jam.location) && (
+      <p class="jam-meta">
+        {jam.timeframe}{jam.timeframe && jam.location && " · "}{jam.location}
+      </p>
+    )}
 
     {jam.description && <p class="card-text">{jam.description}</p>}
 

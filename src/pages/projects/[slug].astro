@@ -1,6 +1,8 @@
 ---
+import { Image, getImage } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import { projects } from "../../data/projects";
+import { getProjectImage } from "../../utils/images";
 import type { Project } from "../../data/projects";
 
 export function getStaticPaths() {
@@ -16,6 +18,24 @@ interface Props {
 
 const { project } = Astro.props;
 
+const heroAsset = getProjectImage(project.image);
+
+// Thumbnails are sized by height (the gallery rows are height-constrained), and the
+// lightbox gets a capped full-size WebP so huge originals are never shipped.
+const shots = await Promise.all(
+  (project.screenshots ?? []).map(async (shot) => {
+    const asset = getProjectImage(shot.src);
+    const full = asset
+      ? await getImage({
+          src: asset,
+          width: Math.min(asset.width, 1920),
+          format: "webp",
+        })
+      : null;
+    return { ...shot, asset, fullSrc: full?.src ?? shot.src };
+  }),
+);
+
 // Projects still awaiting real write-ups show an under-construction note
 const needsContent = !project.about || project.about.length === 0;
 ---
@@ -24,11 +44,23 @@ const needsContent = !project.about || project.about.length === 0;
   <section class="project-page">
     {project.image && (
       <div class="project-hero">
-        <img
-          src={project.image}
-          alt={project.imageAlt ?? `${project.title} cover`}
-          style={`object-position: center ${project.imageOffsetY ?? 50}%`}
-        />
+        {heroAsset ? (
+          <Image
+            src={heroAsset}
+            alt={project.imageAlt ?? `${project.title} cover`}
+            widths={[900, 1800]}
+            sizes="(max-width: 900px) 100vw, 900px"
+            format="webp"
+            loading="eager"
+            style={`object-position: center ${project.imageOffsetY ?? 50}%`}
+          />
+        ) : (
+          <img
+            src={project.image}
+            alt={project.imageAlt ?? `${project.title} cover`}
+            style={`object-position: center ${project.imageOffsetY ?? 50}%`}
+          />
+        )}
       </div>
     )}
 
@@ -96,14 +128,24 @@ const needsContent = !project.about || project.about.length === 0;
         <h2>Gallery</h2>
 
         <div class="screenshots-grid">
-          {project.screenshots.map((shot) => (
+          {shots.map((shot) => (
             <button
               type="button"
               class="screenshot-card"
-              data-lightbox-src={shot.src}
+              data-lightbox-src={shot.fullSrc}
               data-lightbox-alt={shot.alt}
             >
-              <img src={shot.src} alt={shot.alt} />
+              {shot.asset ? (
+                <Image
+                  src={shot.asset}
+                  alt={shot.alt}
+                  height={560}
+                  format="webp"
+                  loading="lazy"
+                />
+              ) : (
+                <img src={shot.src} alt={shot.alt} loading="lazy" />
+              )}
             </button>
           ))}
         </div>

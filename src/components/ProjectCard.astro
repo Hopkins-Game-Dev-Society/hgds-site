@@ -1,9 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import { getProjectImage } from "../utils/images";
+
 interface Props {
   title: string
   shortDescription: string
   slug: string
   status?: "active" | "archived"
+  // Opt-in: render the "In Development" badge for non-archived projects.
+  // Kept as a supported feature; currently disabled from the projects page.
+  showStatus?: boolean
   image?: string
   imageAlt?: string
   imageOffsetY?: number
@@ -14,27 +20,45 @@ const {
   shortDescription,
   slug,
   status,
+  showStatus = false,
   image,
   imageAlt,
   imageOffsetY = 50
 } = Astro.props;
+
+const asset = getProjectImage(image);
 ---
 
 <a class="card" href={`/projects/${slug}`}>
   {image && (
     <div class="card-media">
-      <img
-        src={image}
-        alt={imageAlt ?? `${title} screenshot`}
-        style={`object-position: center ${imageOffsetY}%`}
-      />
+      {asset ? (
+        <Image
+          src={asset}
+          alt={imageAlt ?? `${title} screenshot`}
+          widths={[400, 800]}
+          sizes="(max-width: 640px) 100vw, 400px"
+          format="webp"
+          loading="lazy"
+          style={`object-position: center ${imageOffsetY}%`}
+        />
+      ) : (
+        <img
+          src={image}
+          alt={imageAlt ?? `${title} screenshot`}
+          loading="lazy"
+          style={`object-position: center ${imageOffsetY}%`}
+        />
+      )}
     </div>
   )}
 
   <div class="card-body">
     <div class="card-heading">
       <h3 class="card-title">{title}</h3>
-      {status !== "archived" && <span class="status-badge">In Development</span>}
+      {showStatus && status !== "archived" && (
+        <span class="status-badge">In Development</span>
+      )}
     </div>
 
     {shortDescription && <p class="card-text">{shortDescription}</p>}

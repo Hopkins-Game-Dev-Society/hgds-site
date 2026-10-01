@@ -159,6 +159,10 @@ export const projects: Project[] = [
 
     links: [
       {
+        label: "Play",
+        url: "https://citpyrk.itch.io/immunoblast"
+      },
+      {
         label: "Wiki",
         url: "https://intriguing-profit-513.notion.site/Immunoblast-Wiki-1543b16a52f88068a012ff7ed516eb6c"
       },
@@ -355,48 +359,835 @@ export const projects: Project[] = [
   },
 
   // --- Project Archive -----------------------------------------------------
-  // Completed games. Fill in shortDescription / tagline / about / image /
-  // screenshots as info is gathered, and per-game roles on team members
-  // (empty roles render as just the name).
+  // Completed games. shortDescription / tagline / about / image / screenshots
+  // below were filled from itch.io pages. Gridlock, Shepherd of Dreams, and
+  // Taco and Bleu still have no confirmed itch page.
   {
     slug: "adsomnia",
     title: "ADSOMNIA!",
     status: "archived",
-    shortDescription: "",
+    shortDescription:
+      "Because even your dreams need monetization.",
+    image: "/images/projects/adsomnia-cover.png",
+    imageAlt: "ADSOMNIA! Cover Art",
+
+    tagline:
+      "Because even your dreams need monetization.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://yeetimameme.itch.io/adsomnia"
+      }
+    ],
+
+    about: [
+      "You can't afford to renew your Pro subscription, and now when you fall asleep, your BrainaSync chip monetizes your mind. In your dreams, hyper-personalized ads swarm your thoughts and grow smarter the longer they study you.",
+      "Use ADBLOCK BOMBS to blast through the noise and protect what little free-trial brain oxygen you have left. Survive the night and reclaim your mind.",
+      "Made by Shawn Guo, Carly Wang, Patrick Sullivan, and Prakhar Prakhar in 48 hours for Ctrl + Alt + DMV 2026."
+    ],
+
     team: [
-      { name: "Shang (Shawn) Guo", roles: [] },
-      { name: "Patrick Sullivan", roles: [] },
-      { name: "Prakhar Prakhar", roles: [] }
+      {
+        name: "Shang (Shawn) Guo",
+        roles: [
+          "Programming",
+          "Design"
+        ]
+      },
+      {
+        name: "Carly Wang",
+        roles: [
+          "Design"
+        ]
+      },
+      {
+        name: "Patrick Sullivan",
+        roles: [
+          "Design"
+        ]
+      },
+      {
+        name: "Prakhar Prakhar",
+        roles: [
+          "Programming"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/adsomnia-shot-1.png",
+        alt: "ADSOMNIA! screenshot 1"
+      },
+      {
+        src: "/images/projects/adsomnia-shot-2.png",
+        alt: "ADSOMNIA! screenshot 2"
+      },
+      {
+        src: "/images/projects/adsomnia-shot-3.png",
+        alt: "ADSOMNIA! screenshot 3"
+      },
+      {
+        src: "/images/projects/adsomnia-shot-4.png",
+        alt: "ADSOMNIA! screenshot 4"
+      },
+      {
+        src: "/images/projects/adsomnia-shot-5.png",
+        alt: "ADSOMNIA! screenshot 5"
+      }
     ]
   },
   {
     slug: "deja-you",
     title: "Deja You",
     status: "archived",
-    shortDescription: "",
+    shortDescription:
+      "Set up the future. Stand on the past. A platformer with a time-travel twist.",
+    image: "/images/projects/deja-you-cover.png",
+    imageAlt: "Deja You Cover Art",
+
+    tagline:
+      "Set up the future. Stand on the past. A platformer with a time-travel twist.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://johnnieshen.itch.io/deja-you"
+      }
+    ],
+
+    about: [
+      "You exist on a timeline that loops. Each time you rewind, a new Lifetime spawns and replays your past actions. You have a limited Time Budget, and every second you spend eats into it.",
+      "The puzzles are about cooperating with yourself across timelines. Fifteen levels, inspired by Maslow's hierarchy, take you from survival to self-actualization, one lifetime at a time.",
+      "Built by members of the Johns Hopkins Game Development Society in four days for the 2025 GMTK Game Jam."
+    ],
+
     team: [
-      { name: "Shang (Shawn) Guo", roles: [] },
-      { name: "Samuel Huang", roles: [] },
-      { name: "Jiaming (Johnny) Shen", roles: [] }
+      {
+        name: "Shang (Shawn) Guo",
+        roles: [
+          "Programming",
+          "Audio"
+        ]
+      },
+      {
+        name: "Samuel Huang",
+        roles: [
+          "Design",
+          "Programming"
+        ]
+      },
+      {
+        name: "Jiaming (Johnny) Shen",
+        roles: [
+          "Programming"
+        ]
+      },
+      {
+        name: "Megan Lincicum",
+        roles: [
+          "Art"
+        ]
+      },
+      {
+        name: "Jiyun Guo",
+        roles: [
+          "Art"
+        ]
+      },
+      {
+        name: "Mason Valentine",
+        roles: [
+          "Audio"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/deja-you-shot-1.png",
+        alt: "Deja You screenshot 1"
+      },
+      {
+        src: "/images/projects/deja-you-shot-2.png",
+        alt: "Deja You screenshot 2"
+      },
+      {
+        src: "/images/projects/deja-you-shot-3.png",
+        alt: "Deja You screenshot 3"
+      },
+      {
+        src: "/images/projects/deja-you-shot-4.png",
+        alt: "Deja You screenshot 4"
+      }
     ]
   },
   {
     slug: "ducks-afar",
     title: "Ducks Afar",
     status: "archived",
-    shortDescription: "",
+    shortDescription:
+      "Your ducks are lost among quiet planets.",
+    image: "/images/projects/ducks-afar-cover.png",
+    imageAlt: "Ducks Afar Cover Art",
+
+    tagline:
+      "Your ducks are lost among quiet planets.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://l1ryx.itch.io/ducks-afar"
+      }
+    ],
+
+    about: [
+      "You are a planetary field researcher stationed far from home. The ducks in your care have wandered across a distant solar system, and this is a short experience that will be over before you know it.",
+      "To bring them back, you prepare meals from sealed packs of HARDWORMS, magnetic supplies you cannot split or combine by hand. The ducks will only eat an exact portion. Ancient machines on each planet are the only way to turn what you have into what they will take.",
+      "The itch demo is the first act."
+    ],
+
     team: [
-      { name: "Shang (Shawn) Guo", roles: [] }
+      {
+        name: "Shang (Shawn) Guo",
+        roles: [
+          "Programming",
+          "Design",
+          "Art",
+          "Music"
+        ]
+      },
+      {
+        name: "Carly Wang",
+        roles: [
+          "Writing",
+          "Art"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/ducks-afar-shot-1.png",
+        alt: "Ducks Afar screenshot 1"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-2.png",
+        alt: "Ducks Afar screenshot 2"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-3.png",
+        alt: "Ducks Afar screenshot 3"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-4.png",
+        alt: "Ducks Afar screenshot 4"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-5.png",
+        alt: "Ducks Afar screenshot 5"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-6.png",
+        alt: "Ducks Afar screenshot 6"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-7.png",
+        alt: "Ducks Afar screenshot 7"
+      },
+      {
+        src: "/images/projects/ducks-afar-shot-8.png",
+        alt: "Ducks Afar screenshot 8"
+      }
     ]
   },
   {
     slug: "evershore",
     title: "Evershore",
     status: "archived",
-    shortDescription: "",
+    shortDescription:
+      "A peaceful island trip held together by ritual.",
+    image: "/images/projects/evershore-cover.jpeg",
+    imageAlt: "Evershore Cover Art",
+
+    tagline:
+      "A peaceful island trip held together by ritual.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://ha1f-dev.itch.io/evershore"
+      }
+    ],
+
+    about: [
+      "Lull, Wind, Flame, and Blood. Evershore is a quiet isometric island game about routines, rituals, and waiting for the sea to change.",
+      "Explore a small village, break windmills, light lanterns, dispel annoyances, and help the locals prepare for departure. When the water finally stills, make sure you are ready for what comes next.",
+      "Built for the fall 2025 computer graphics course at Johns Hopkins."
+    ],
+
     team: [
-      { name: "Samuel Huang", roles: [] },
-      { name: "Marcus King", roles: [] }
+      {
+        name: "Samuel Huang",
+        roles: []
+      },
+      {
+        name: "Marcus King",
+        roles: []
+      },
+      {
+        name: "Liam Housenbold",
+        roles: []
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/evershore-shot-1.png",
+        alt: "Evershore screenshot 1"
+      },
+      {
+        src: "/images/projects/evershore-shot-2.png",
+        alt: "Evershore screenshot 2"
+      },
+      {
+        src: "/images/projects/evershore-shot-3.png",
+        alt: "Evershore screenshot 3"
+      }
+    ]
+  },
+  {
+    slug: "hijax",
+    title: "Hijax",
+    status: "archived",
+    shortDescription:
+      "Play a parasite attempting to reach its host's brain.",
+    image: "/images/projects/hijax-cover.png",
+    imageAlt: "Hijax Cover Art",
+
+    tagline:
+      "Play a parasite attempting to reach its host's brain.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://laserdice.itch.io/hijax"
+      }
+    ],
+
+    about: [
+      "Play a parasite attempting to reach its host's brain. Spread into an adjacent pathway or organ, strengthen an infection you already hold, and bring the fever to level 3 so you can cross the blood-brain barrier.",
+      "The higher the fever, the harder the immune system fights back. Made by Megan and Seiya Lincicum for the 2026 Ctrl + Alt + DMV game jam."
+    ],
+
+    team: [
+      {
+        name: "Megan Lincicum",
+        roles: []
+      },
+      {
+        name: "Seiya Lincicum",
+        roles: []
+      }
+    ],
+  },
+  {
+    slug: "love-language",
+    title: "Love Language",
+    status: "archived",
+    shortDescription:
+      "Your date is alright, but you are not...",
+    image: "/images/projects/love-language-cover.png",
+    imageAlt: "Love Language Cover Art",
+
+    tagline:
+      "Your date is alright, but you are not...",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://hopkins-game-dev-society.itch.io/love-language"
+      }
+    ],
+
+    about: [
+      "You ever notice how coffee shops sound like the universe? Constant background noise, with little bursts of chaos. You have always struggled to put yourself out there, but you finally have a date. Talk with them. They seem like a good person, right?",
+      "The night turns on you. The page insists that no, that's just you, they are definitely not the problem, and you should not panic.",
+      "Built by the Johns Hopkins Game Development Society in six days for the 2025 Itch Scream Jam."
+    ],
+
+    team: [
+      {
+        name: "Shang (Shawn) Guo",
+        roles: [
+          "Production",
+          "Programming",
+          "Audio"
+        ]
+      },
+      {
+        name: "Brett Wolfinger",
+        roles: [
+          "Production",
+          "Programming"
+        ]
+      },
+      {
+        name: "Samuel Huang",
+        roles: [
+          "Design",
+          "Writing"
+        ]
+      },
+      {
+        name: "Jiaming (Johnny) Shen",
+        roles: [
+          "Production",
+          "Programming"
+        ]
+      },
+      {
+        name: "Patrick Sullivan",
+        roles: [
+          "Audio"
+        ]
+      },
+      {
+        name: "Trevor Black",
+        roles: []
+      },
+      {
+        name: "Prakhar Prakhar",
+        roles: [
+          "Design",
+          "Writing"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/love-language-shot-1.png",
+        alt: "Love Language screenshot 1"
+      },
+      {
+        src: "/images/projects/love-language-shot-2.png",
+        alt: "Love Language screenshot 2"
+      },
+      {
+        src: "/images/projects/love-language-shot-3.png",
+        alt: "Love Language screenshot 3"
+      },
+      {
+        src: "/images/projects/love-language-shot-4.png",
+        alt: "Love Language screenshot 4"
+      }
+    ]
+  },
+  {
+    slug: "project-ingenuity",
+    title: "Project Ingenuity",
+    status: "archived",
+    shortDescription:
+      "Salvage parts, design a vehicle, and explore an alien wilderness.",
+    image: "/images/projects/project-ingenuity-cover.png",
+    imageAlt: "Project Ingenuity Cover Art",
+
+    tagline:
+      "Salvage parts, design a vehicle and explore alien wilderness in an open world sandbox.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://johnnieshen.itch.io/mission-ingenuity"
+      }
+    ],
+
+    about: [
+      "Published on itch as Mission Ingenuity. You are the command module of a defunct rover and wake up in the middle of nowhere on an alien planet with no parts attached.",
+      "Scavenge scattered parts, upgrade the rover, fight the things that live out there, and build a rocket that gets you off the planet so you can keep exploring."
+    ],
+
+    team: [
+      {
+        name: "Jiaming (Johnny) Shen",
+        roles: [
+          "Programming"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/project-ingenuity-shot-1.jpg",
+        alt: "Project Ingenuity screenshot 1"
+      }
+    ]
+  },
+  {
+    slug: "rain-doctor",
+    title: "Rain Doctor",
+    status: "archived",
+    shortDescription:
+      "Project currently in development by the Hopkins Game Development Society.",
+    image: "/images/projects/rain-doctor-cover.gif",
+    imageAlt: "Rain Doctor Cover Art",
+
+    tagline:
+      "Project currently in development by the Hopkins Game Development Society.",
+
+    links: [
+      {
+        label: "itch.io",
+        url: "https://hopkins-game-dev-society.itch.io/rain-doctor"
+      }
+    ],
+
+    about: [
+      "Project currently in development by the Hopkins Game Development Society. The itch page is a placeholder and points to the devlog for updates."
+    ],
+
+    team: [
+      {
+        name: "Shang (Shawn) Guo",
+        roles: []
+      },
+      {
+        name: "Benjamin Albeyta",
+        roles: []
+      },
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Jiaming (Johnny) Shen",
+        roles: []
+      },
+      {
+        name: "Megan Lincicum",
+        roles: []
+      },
+      {
+        name: "Patrick Sullivan",
+        roles: []
+      },
+      {
+        name: "Trevor Black",
+        roles: []
+      },
+      {
+        name: "Prakhar Prakhar",
+        roles: []
+      }
+    ],
+  },
+  {
+    slug: "red-gold",
+    title: "Red Gold",
+    status: "archived",
+    shortDescription:
+      "Drink the blood of your enemies to survive as a parasite.",
+    image: "/images/projects/red-gold-cover.png",
+    imageAlt: "Red Gold Cover Art",
+
+    tagline:
+      "Drink the blood of your enemies to survive as a parasite.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://styx50.itch.io/red-gold"
+      }
+    ],
+
+    about: [
+      "You play as an alien parasite that has taken over a host. The parasite launches attacks made of the host's blood, steadily draining its supply. Kill enemies to replenish that blood. They are trying to kill you too, before the parasite spreads."
+    ],
+
+    team: [
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Brady Bock",
+        roles: []
+      }
+    ],
+  },
+  {
+    slug: "rogue-ricochet",
+    title: "Rogue Ricochet",
+    status: "archived",
+    shortDescription:
+      "A top-down shooter where your bullets ricochet.",
+    image: "/images/projects/rogue-ricochet-cover.png",
+    imageAlt: "Rogue Ricochet Cover Art",
+
+    tagline:
+      "Top down shooter where your bullets ricochet.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://reddish-blue.itch.io/rogue-ricochet"
+      }
+    ],
+
+    about: [
+      "You were a lab researcher working on a super-strong, super-bouncy rubber, and you were kicked out for wanting to make weapons with it. Supplies of the bullets you already made are running low, so you break back into the lab to steal more.",
+      "Turrets guard the place. The bullets ricochet off everything, and they will hurt you if you are not careful."
+    ],
+
+    team: [
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Brady Bock",
+        roles: []
+      }
+    ],
+  },
+  {
+    slug: "shelling-out",
+    title: "Shelling Out",
+    status: "archived",
+    shortDescription:
+      "A clicker game where you find shells on the beach.",
+    image: "/images/projects/shelling-out-cover.png",
+    imageAlt: "Shelling Out Cover Art",
+
+    tagline:
+      "A clicker game where you find shells on the beach.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://reddish-blue.itch.io/shelling-out"
+      }
+    ],
+
+    about: [
+      "A clicker about finding shells on the beach. Progress autosaves."
+    ],
+
+    team: [
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Brady Bock",
+        roles: []
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/shelling-out-shot-1.png",
+        alt: "Shelling Out screenshot 1"
+      },
+      {
+        src: "/images/projects/shelling-out-shot-2.png",
+        alt: "Shelling Out screenshot 2"
+      },
+      {
+        src: "/images/projects/shelling-out-shot-3.png",
+        alt: "Shelling Out screenshot 3"
+      }
+    ]
+  },
+  {
+    slug: "apply-or-die",
+    title: "Apply or Die!",
+    status: "archived",
+    shortDescription:
+      "Apply before you turn 22, or they'll come for you!",
+    image: "/images/projects/apply-or-die-cover.png",
+    imageAlt: "Apply or Die! Cover Art",
+
+    tagline:
+      "Apply before you turn 22, or they'll come for you!",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://hopkins-game-dev-society.itch.io/apply-or-die"
+      }
+    ],
+
+    about: [
+      "You wake up on the day before your 22nd birthday. A new law says anyone still unemployed at 22 will be hunted down and shot, and you are still unemployed.",
+      "You have 10 minutes. Finish the job application before time runs out. Click the on-screen buttons, and search for the clues that let you fill it out. The in-game username has a typo: \"haven\" is supposed to be \"heaven.\"",
+      "Made for GMTK 2026."
+    ],
+
+    team: [
+      {
+        name: "Benjamin Albeyta",
+        roles: [
+          "Direction",
+          "Programming",
+          "Design"
+        ]
+      },
+      {
+        name: "Shawn Guo",
+        roles: [
+          "Programming",
+          "Design"
+        ]
+      },
+      {
+        name: "Oscar Munoz",
+        roles: [
+          "Programming",
+          "Design"
+        ]
+      },
+      {
+        name: "Antonio Gentile",
+        roles: [
+          "Music",
+          "Design"
+        ]
+      },
+      {
+        name: "Teddy Starynski",
+        roles: [
+          "Art",
+          "Design"
+        ]
+      },
+      {
+        name: "Samuel Huang",
+        roles: [
+          "Design"
+        ]
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/apply-or-die-shot-1.png",
+        alt: "Apply or Die! screenshot 1"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-2.gif",
+        alt: "Apply or Die! screenshot 2"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-3.png",
+        alt: "Apply or Die! screenshot 3"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-4.png",
+        alt: "Apply or Die! screenshot 4"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-5.png",
+        alt: "Apply or Die! screenshot 5"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-6.png",
+        alt: "Apply or Die! screenshot 6"
+      },
+      {
+        src: "/images/projects/apply-or-die-shot-7.png",
+        alt: "Apply or Die! screenshot 7"
+      }
+    ]
+  },
+  {
+    slug: "farm-tower",
+    title: "Farm Tower TD Defense",
+    status: "archived",
+    shortDescription:
+      "Plant crops, place towers, protect your family.",
+    image: "/images/projects/farm-tower-cover.png",
+    imageAlt: "Farm Tower TD Defense Cover Art",
+
+    tagline:
+      "Plant crops, place towers, protect your family!",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://lmalmud.itch.io/farm-tower-td-defense"
+      }
+    ],
+
+    about: [
+      "You are a farmer settling a frontier world. The land grows well, and hungry monsters wait in the dark for the crops and the livestock.",
+      "Farm during the day to earn money, then buy towers and hold the farm through the night. Manage the time, or you and the crops do not make it."
+    ],
+
+    team: [
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Brady Bock",
+        roles: []
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/farm-tower-shot-1.png",
+        alt: "Farm Tower TD Defense screenshot 1"
+      },
+      {
+        src: "/images/projects/farm-tower-shot-2.png",
+        alt: "Farm Tower TD Defense screenshot 2"
+      }
+    ]
+  },
+  {
+    slug: "lasso-lake",
+    title: "Lasso Lake",
+    status: "archived",
+    shortDescription:
+      "Round up cattle with a lasso after a storm knocks down the ranch fence.",
+    image: "/images/projects/lasso-lake-cover.png",
+    imageAlt: "Lasso Lake Cover Art",
+
+    tagline:
+      "Round up cattle with a lasso after a storm knocks down the ranch fence.",
+
+    links: [
+      {
+        label: "Play",
+        url: "https://styx50.itch.io/lasso-lake"
+      }
+    ],
+
+    about: [
+      "Welcome to Lasso Lake, a cattle ranch that lost its fence in a storm. The fences are back up. The cattle are not.",
+      "Lasso one cow at a time and get it back to the pen. Made for GMTK 2025."
+    ],
+
+    team: [
+      {
+        name: "Teddy Starynski",
+        roles: []
+      },
+      {
+        name: "Brady Bock",
+        roles: []
+      }
+    ],
+
+    screenshots: [
+      {
+        src: "/images/projects/lasso-lake-shot-1.png",
+        alt: "Lasso Lake screenshot 1"
+      }
     ]
   },
   {
@@ -406,85 +1197,6 @@ export const projects: Project[] = [
     shortDescription: "",
     team: [
       { name: "Kenneth Elsman", roles: [] }
-    ]
-  },
-  {
-    slug: "hijax",
-    title: "Hijax",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Megan Lincicum", roles: [] }
-    ]
-  },
-  {
-    slug: "love-language",
-    title: "Love Language",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Shang (Shawn) Guo", roles: [] },
-      { name: "Brett Wolfinger", roles: [] },
-      { name: "Samuel Huang", roles: [] },
-      { name: "Jiaming (Johnny) Shen", roles: [] },
-      { name: "Patrick Sullivan", roles: [] },
-      { name: "Trevor Black", roles: [] },
-      { name: "Prakhar Prakhar", roles: [] }
-    ]
-  },
-  {
-    slug: "project-ingenuity",
-    title: "Project Ingenuity",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Jiaming (Johnny) Shen", roles: [] }
-    ]
-  },
-  {
-    slug: "rain-doctor",
-    title: "Rain Doctor",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Shang (Shawn) Guo", roles: [] },
-      { name: "Benjamin Albeyta", roles: [] },
-      { name: "Teddy Starynski", roles: [] },
-      { name: "Jiaming (Johnny) Shen", roles: [] },
-      { name: "Megan Lincicum", roles: [] },
-      { name: "Patrick Sullivan", roles: [] },
-      { name: "Trevor Black", roles: [] },
-      { name: "Prakhar Prakhar", roles: [] }
-    ]
-  },
-  {
-    slug: "red-gold",
-    title: "Red Gold",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Teddy Starynski", roles: [] },
-      { name: "Brady Bock", roles: [] }
-    ]
-  },
-  {
-    slug: "rogue-ricochet",
-    title: "Rogue Ricochet",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Teddy Starynski", roles: [] },
-      { name: "Brady Bock", roles: [] }
-    ]
-  },
-  {
-    slug: "shelling-out",
-    title: "Shelling Out",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Teddy Starynski", roles: [] },
-      { name: "Brady Bock", roles: [] }
     ]
   },
   {
@@ -504,5 +1216,5 @@ export const projects: Project[] = [
     team: [
       { name: "Andreas Jaramillo", roles: [] }
     ]
-  },
+  }
 ]

@@ -3,6 +3,10 @@ import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "../../data/projects";
 
+// Flip to true to show "In Development" badges on active projects again.
+// ProjectCard still fully supports the badge; this just gates the display.
+const SHOW_STATUS_BADGES = false;
+
 // One list: projects in active development lead, then completed games alphabetically
 const sortedProjects = [
   ...projects.filter((project) => project.status !== "archived"),
@@ -17,7 +21,7 @@ const sortedProjects = [
     <h1>Projects</h1>
 
     <p class="lede">
-      Games built by members of the Hopkins Game Dev Society — from projects in
+      Games built by members of the Hopkins Game Dev Society. From projects in
       active development to finished games and jam entries from years past.
     </p>
 
@@ -28,6 +32,7 @@ const sortedProjects = [
           shortDescription={project.shortDescription}
           slug={project.slug}
           status={project.status}
+          showStatus={SHOW_STATUS_BADGES}
           image={project.image}
           imageAlt={project.imageAlt}
           imageOffsetY={project.imageOffsetY}
