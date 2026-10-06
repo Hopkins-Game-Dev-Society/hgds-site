@@ -806,7 +806,7 @@ export const projects: Project[] = [
     status: "archived",
     shortDescription:
       "Salvage parts, design a vehicle and explore alien wilderness in an open world sandbox.",
-    image: "/images/projects/project-ingenuity-cover.png",
+    image: "/images/projects/project-ingenuity-cover.jpg",
     imageAlt: "Project Ingenuity Cover Art",
 
     tagline:
@@ -834,7 +834,7 @@ export const projects: Project[] = [
 
     screenshots: [
       {
-        src: "/images/projects/project-ingenuity-shot-1.jpg",
+        src: "/images/projects/project-ingenuity-shot-1.png",
         alt: "Project Ingenuity screenshot 1"
       }
     ]
