@@ -833,10 +833,6 @@ export const projects: Project[] = [
     ],
 
     screenshots: [
-      {
-        src: "/images/projects/project-ingenuity-shot-1.png",
-        alt: "Project Ingenuity screenshot 1"
-      }
     ]
   },
   {
