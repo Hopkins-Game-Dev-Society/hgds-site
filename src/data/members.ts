@@ -18,8 +18,7 @@ export const members: Member[] = [
   {
     name: "Andreas Jaramillo",
     classYear: "Class of 2025",
-    roles: ["President '25-26", "Developer", "Designer"],
-    games: ["Taco and Bleu"]
+    roles: ["President '25-26", "Developer", "Designer"]
   },
   {
     name: "Shang (Shawn) Guo",
@@ -36,14 +35,13 @@ export const members: Member[] = [
   {
     name: "Kenneth Elsman",
     classYear: "Class of 2025",
-    roles: ["Developer", "Designer"],
-    games: ["Gridlock"]
+    roles: ["Developer", "Designer"]
   },
   {
     name: "Benjamin Albeyta",
     classYear: "Class of 2027",
     roles: ["Outreach Chair '26-27", "Developer", "Art"],
-    games: ["Rain Doctor", "Shepherd of Dreams"]
+    games: ["Rain Doctor"]
   },
   {
     name: "Samuel Huang",

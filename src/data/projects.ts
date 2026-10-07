@@ -368,8 +368,7 @@ export const projects: Project[] = [
 
   // --- Project Archive -----------------------------------------------------
   // Completed games. shortDescription / tagline / about / image / screenshots
-  // below were filled from itch.io pages. Gridlock, Shepherd of Dreams, and
-  // Taco and Bleu still have no confirmed itch page.
+  // below were filled from itch.io pages.
   {
     slug: "adsomnia",
     title: "ADSOMNIA!",
@@ -1207,33 +1206,6 @@ export const projects: Project[] = [
         src: "/images/projects/lasso-lake-shot-1.png",
         alt: "Lasso Lake screenshot 1"
       }
-    ]
-  },
-  {
-    slug: "gridlock",
-    title: "Gridlock",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Kenneth Elsman", roles: [] }
-    ]
-  },
-  {
-    slug: "shepherd-of-dreams",
-    title: "Shepherd of Dreams",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Benjamin Albeyta", roles: [] }
-    ]
-  },
-  {
-    slug: "taco-and-bleu",
-    title: "Taco and Bleu",
-    status: "archived",
-    shortDescription: "",
-    team: [
-      { name: "Andreas Jaramillo", roles: [] }
     ]
   }
 ]
