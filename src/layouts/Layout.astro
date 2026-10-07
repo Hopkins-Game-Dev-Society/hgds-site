@@ -1,5 +1,43 @@
 ---
-const { title = "Hopkins Game Dev Society" } = Astro.props;
+import { Font } from "astro:assets";
+
+interface Props {
+  title?: string;
+  /** Search-result snippet and link-preview text; aim for ~150–160 characters. */
+  description?: string;
+  /** Share image: a root-relative path or absolute URL, ideally 1200x630. */
+  image?: string;
+  imageAlt?: string;
+  /** "website" for most pages; game pages could use "article". */
+  type?: string;
+  /** Keep the page out of search results (404, unfinished pages). */
+  noindex?: boolean;
+  /** schema.org JSON-LD block(s); see src/utils/structuredData.ts. */
+  jsonLd?: object | object[];
+}
+
+const SITE_NAME = "Hopkins Game Dev Society";
+const DEFAULT_DESCRIPTION =
+  "The Hopkins Game Dev Society is a community of game developers at Johns Hopkins University building games, running game jams, and growing as creators.";
+
+const {
+  title = SITE_NAME,
+  description = DEFAULT_DESCRIPTION,
+  image = "/images/og-default.png",
+  imageAlt = `${SITE_NAME} logo`,
+  type = "website",
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+// Canonical and share URLs must be absolute; `site` comes from astro.config.mjs.
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+
+// "<" is escaped so data text can never close the <script> tag early.
+const jsonLdBlocks = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []).map(
+  (block) => JSON.stringify(block).replace(/</g, "\\u003c"),
+);
 ---
 
 <!doctype html>
@@ -8,9 +46,37 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonicalUrl} />
+    )}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="theme-color" content="#002d72" />
+
     <link rel="icon" href="/images/hgds-logo.png" />
     <link rel="shortcut icon" href="/images/hgds-logo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="/images/hgds-logo.png" />
+    <Font cssVariable="--font-body" preload={[{ weight: 400, style: "normal" }]} />
+    <Font cssVariable="--font-heading" preload={[{ weight: 700, style: "normal" }]} />
+    {jsonLdBlocks.map((json) => (
+      <script type="application/ld+json" is:inline set:html={json} />
+    ))}
     <style is:global>
 
       .btn-interactive {
@@ -70,7 +136,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Inter", system-ui, sans-serif;
+        font-family: var(--font-body);
         background: var(--bg);
         color: var(--text);
         -webkit-font-smoothing: antialiased;
@@ -92,7 +158,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         line-height: 1.15;
         margin-top: 0;
         letter-spacing: -0.02em;
-        font-family: "Ubuntu Mono", monospace;
+        font-family: var(--font-heading);
         color: var(--brand-blue);
         letter-spacing: 0.03em;
       }
@@ -127,7 +193,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         z-index: 10;
         backdrop-filter: blur(10px);
         background: rgba(8, 26, 58, 0.92);
-        font-family: "Ubuntu Mono", monospace;
+        font-family: var(--font-heading);
         letter-spacing: 0.1em;
         border-bottom: 1px solid var(--header-border);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
@@ -195,7 +261,7 @@ const { title = "Hopkins Game Dev Society" } = Astro.props;
         background: var(--brand-gold);
         color: var(--brand-blue);
         font-weight: 700;
-        font-family: "Inter", system-ui, sans-serif;
+        font-family: var(--font-body);
         transition:
           transform 0.18s ease,
           background 0.18s ease,

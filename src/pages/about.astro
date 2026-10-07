@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { members } from "../data/members";
+import { organization } from "../utils/structuredData";
 
 // Officer roles in members.ts are tagged with their term, e.g. "Co-President '26-27".
 // Bump this one string when a new board takes over.
@@ -37,7 +38,11 @@ const board = members
   .sort((a, b) => rank(a.title) - rank(b.title) || a.name.localeCompare(b.name));
 ---
 
-<Layout title="About | Hopkins Game Dev Society">
+<Layout
+  title="About | Hopkins Game Dev Society"
+  description="Who we are: the Johns Hopkins Game Development Society's mission, how to get involved, and the student board running the club this year."
+  jsonLd={organization}
+>
   <section>
     <h1>Who We Are</h1>
 

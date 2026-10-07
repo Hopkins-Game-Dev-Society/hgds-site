@@ -2,11 +2,16 @@
 import Layout from "@layouts/Layout.astro";
 import JamCard from "@components/JamCard.astro";
 import { jams } from "../data/jams";
+import { organization, website } from "../utils/structuredData";
 
 const recentJams = jams.slice(0, 3);
 ---
 
-<Layout title="Hopkins Game Dev Society">
+<Layout
+  title="Hopkins Game Dev Society"
+  description="The Hopkins Game Dev Society is Johns Hopkins University's game development club: students building games together, running game jams, and shipping projects."
+  jsonLd={[website, organization]}
+>
   <section>
     <h1>Hopkins Game Dev Society</h1>
     <p class="lede">

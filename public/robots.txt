@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.hopkinsgamedevsociety.com/sitemap-index.xml

@@ -3,6 +3,7 @@ import { Image, getImage } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import { projects } from "../../data/projects";
 import { getProjectImage } from "../../utils/images";
+import { videoGame } from "../../utils/structuredData";
 import type { Project } from "../../data/projects";
 
 export function getStaticPaths() {
@@ -38,9 +39,47 @@ const shots = await Promise.all(
 
 // Projects still awaiting real write-ups show an under-construction note
 const needsContent = !project.about || project.about.length === 0;
+
+// Search snippet / link preview: the first non-empty of tagline, card blurb, or the
+// opening about paragraph, trimmed at a word boundary to fit the ~160-char snippet.
+const summarySource =
+  [project.tagline, project.shortDescription, project.about?.[0]]
+    .map((text) => text?.trim())
+    .find((text) => text) ??
+  `${project.title}, a game made by students in the Hopkins Game Dev Society at Johns Hopkins University.`;
+const description =
+  summarySource.length <= 160
+    ? summarySource
+    : `${summarySource.slice(0, 157).replace(/\s+\S*$/, "")}...`;
+
+// Share image: a JPEG of the cover (widest format support among link unfurlers).
+// Animated GIF covers aren't optimized assets, so they're shared as-is.
+const shareImage = heroAsset
+  ? (
+      await getImage({
+        src: heroAsset,
+        width: Math.min(heroAsset.width, 1200),
+        format: "jpg",
+      })
+    ).src
+  : project.image;
+
+// Search-engine data for the game, pulled straight from its projects.ts entry.
+const gameJsonLd = videoGame(
+  project,
+  [shareImage, ...shots.map((shot) => shot.fullSrc)].filter(
+    (src): src is string => Boolean(src),
+  ),
+);
 ---
 
-<Layout title={`${project.title} | Hopkins Game Dev Society`}>
+<Layout
+  title={`${project.title} | Hopkins Game Dev Society`}
+  description={description}
+  image={shareImage}
+  imageAlt={project.imageAlt ?? `${project.title} cover`}
+  jsonLd={gameJsonLd}
+>
   <section class="project-page">
     {project.image && (
       <div class="project-hero">
